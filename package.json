@@ -1,0 +1,46 @@
+{
+  "name": "b5-web",
+  "version": "1.0.0",
+  "description": "Static site for big five personality tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && nsp check && ava",
+    "test-offline": "standard && ava",
+    "coverage": "nyc ava",
+    "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
+    "standard-fix": "standard --fix",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zrrrzzt/b5-web.git"
+  },
+  "keywords": [],
+  "author": "Geir Gåsodden <geir.gasodden@pythonia.no> (https://github.com/zrrrzzt)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zrrrzzt/b5-web/issues"
+  },
+  "homepage": "https://github.com/zrrrzzt/b5-web#readme",
+  "dependencies": {
+    "b5-calculate-score": "1.0.1",
+    "b5-johnson-120-ipip-neo-pi-r": "1.1.4",
+    "b5-result-text": "1.0.0",
+    "buffer": "5.0.8",
+    "next": "4.2.3",
+    "pako": "1.0.6",
+    "react": "16.2.0",
+    "react-dom": "16.2.0"
+  },
+  "devDependencies": {
+    "ava": "0.25.0",
+    "coveralls": "3.0.0",
+    "nsp": "3.1.0",
+    "nyc": "11.4.1",
+    "standard": "10.0.3"
+  }
+}
