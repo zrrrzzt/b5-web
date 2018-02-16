@@ -1,21 +1,20 @@
 import { Component } from 'react'
 import Layout from '../components/Layout'
-import Item from '../components/Item'
-const { getItems } = require('b5-johnson-120-ipip-neo-pi-r')
+const qs = require('querystring')
 
-export default class Index extends Component {
+export default class Result extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      answers: {},
-      items: false
+      number: 0
     }
     this.addOne = this.addOne.bind(this)
     this.subtractOne = this.subtractOne.bind(this)
   }
 
   async componentDidMount () {
-    this.setState({items: getItems('en', true)})
+    const query = qs.parse(window.location.search.replace('?', ''))
+    this.setState({query: query})
   }
 
   addOne () {
@@ -35,9 +34,9 @@ export default class Index extends Component {
       <Layout>
         <div>
           <h1>Big Five Test</h1>
-          {this.state.items !== false
-          ? this.state.items.map(item => <Item data={item} />)
-          : null}
+          <h2>{this.state.number}</h2>
+          <button onClick={this.subtractOne}>Subtract 1</button>
+          <button onClick={this.addOne}>Add 1</button>
         </div>
         <style jsx>
           {`
