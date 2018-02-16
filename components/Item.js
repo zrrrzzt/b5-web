@@ -1,11 +1,16 @@
+import Choices from './Choices'
+
 export default ({ data }) => (
   <div className={'item-wrapper'}>
     <div>{data.text}</div>
+    {data ? <Choices data={data} /> : null}
     <style jsx>
       {`
         .item-wrapper {
           background: white;
           color: black;
+          max-width: 800px;
+          margin: 5px;
         }
         a, a:visited {
           color: white;
