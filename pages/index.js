@@ -1,33 +1,80 @@
 import { Component } from 'react'
 import Layout from '../components/Layout'
 import Item from '../components/Item'
+import Resume from '../components/Resume'
 const { getItems } = require('b5-johnson-120-ipip-neo-pi-r')
+const { pack, unpack } = require('jcb64')
+const calculateScore = require('b5-calculate-score')
+const getResult = require('b5-result-text')
+const qs = require('querystring')
+
+function urlEncode (b64) {
+  return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+}
+
+function urlDecode (encoded) {
+  encoded = encoded.replace(/-/g, '+').replace(/_/g, '/')
+  while (encoded.length % 4) {
+    encoded += '='
+  }
+  return encoded
+}
 
 export default class Index extends Component {
   constructor (props) {
     super(props)
     this.state = {
       answers: {},
-      items: false
+      items: false,
+      b64: false,
+      scores: false,
+      resume: false
     }
-    this.addOne = this.addOne.bind(this)
-    this.subtractOne = this.subtractOne.bind(this)
+    this.setAnswer = this.setAnswer.bind(this)
+    this.doSubmit = this.doSubmit.bind(this)
   }
 
-  async componentDidMount () {
-    this.setState({items: getItems('en', true)})
+  componentDidMount () {
+    const query = qs.parse(window.location.search.replace('?', ''))
+    if (query.result) {
+      const b64 = urlDecode(query.result)
+      const answers = unpack(b64)
+      const scores = calculateScore({answers: answers})
+      const resume = getResult({scores: scores, lang: 'en'})
+      this.setState({
+        b64: b64,
+        scores: scores,
+        resume: resume
+      })
+    } else {
+      this.setState({items: getItems('en', true)})
+    }
   }
 
-  addOne () {
-    const number = this.state.number
-    const newNumber = number + 1
-    this.setState({number: newNumber})
+  setAnswer (e) {
+    e.preventDefault()
+    let answers = this.state.answers
+    answers[e.target.dataset.qid] = {
+      domain: e.target.dataset.domain,
+      facet: e.target.dataset.facet,
+      score: e.target.dataset.score
+    }
+    this.setState({answers: answers})
   }
 
-  subtractOne () {
-    const number = this.state.number
-    const newNumber = number - 1
-    this.setState({number: newNumber})
+  doSubmit (e) {
+    const answers = this.state.answers
+    let choices = Object.keys(answers).reduce((prev, current) => {
+      const choice = answers[current]
+      prev.push({
+        domain: choice.domain,
+        facet: choice.facet,
+        score: choice.score
+      })
+      return prev
+    }, [])
+    const b64 = pack(choices)
+    window.location = `?result=${urlEncode(b64)}`
   }
 
   render () {
@@ -36,7 +83,13 @@ export default class Index extends Component {
         <div>
           <h1>Big Five Test</h1>
           {this.state.items !== false
-          ? this.state.items.map(item => <Item data={item} />)
+          ? this.state.items.map(item => <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} />)
+          : null}
+          {this.state.items !== false
+          ? <button onClick={this.doSubmit}>Submit</button>
+          : null}
+          {this.state.resume !== false
+          ? <Resume data={this.state.resume} />
           : null}
         </div>
         <style jsx>
@@ -58,7 +111,7 @@ export default class Index extends Component {
               text-decoration: none;
               display: inline-block;
               font-size: 16px;
-              width: 150px;
+              width: 200px;
               margin: 10px;
               cursor: pointer;
             }
