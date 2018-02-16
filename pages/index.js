@@ -34,7 +34,7 @@ export default class Index extends Component {
     this.doSubmit = this.doSubmit.bind(this)
   }
 
-  componentDidMount () {
+  async componentDidMount () {
     const query = qs.parse(window.location.search.replace('?', ''))
     if (query.result) {
       const b64 = urlDecode(query.result)
