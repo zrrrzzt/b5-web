@@ -8,18 +8,6 @@ const calculateScore = require('b5-calculate-score')
 const getResult = require('b5-result-text')
 const qs = require('querystring')
 
-function urlEncode (b64) {
-  return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
-}
-
-function urlDecode (encoded) {
-  encoded = encoded.replace(/-/g, '+').replace(/_/g, '/')
-  while (encoded.length % 4) {
-    encoded += '='
-  }
-  return encoded
-}
-
 export default class Index extends Component {
   constructor (props) {
     super(props)
@@ -37,7 +25,7 @@ export default class Index extends Component {
   async componentDidMount () {
     const query = qs.parse(window.location.search.replace('?', ''))
     if (query.result) {
-      const b64 = urlDecode(query.result)
+      const b64 = query.result
       const answers = unpack(b64)
       const scores = calculateScore({answers: answers})
       const resume = getResult({scores: scores, lang: 'en'})
@@ -74,7 +62,7 @@ export default class Index extends Component {
       return prev
     }, [])
     const b64 = pack(choices)
-    window.location = `?result=${urlEncode(b64)}`
+    window.location = `?result=${b64}`
   }
 
   render () {

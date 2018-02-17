@@ -1,4 +1,5 @@
 const glob = require('glob')
+
 module.exports = {
   webpack (cfg) {
     cfg.plugins = cfg.plugins.filter(plugin => {
