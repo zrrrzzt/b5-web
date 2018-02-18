@@ -2,14 +2,20 @@ import Choices from './Choices'
 
 export default ({ data, answers, setAnswer }) => (
   <div className={'item-wrapper'}>
-    <div>{data.text}</div>
+    <div className={'text'}>{data.text}</div>
     {data ? <Choices data={data} answers={answers} setAnswer={setAnswer} /> : null}
     <style jsx>
       {`
+        .text {
+          margin-bottom: 10px;
+          font-size: large;
+        }
         .item-wrapper {
-          background: white;
+          border-radius: 0;
+          background-color: #FFF;
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
           color: black;
-          margin: 5px;
+          margin-top: 10px;
           padding: 10px;
         }
       `}

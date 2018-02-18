@@ -28,6 +28,11 @@ export default ({ choice, item, answers, setAnswer }) => (
         .isActive {
           background: yellow;
         }
+        @media screen and (max-width: 700px) {
+          button {
+            width: 300px;
+            margin-bottom: 5px;
+          }
       `}
     </style>
   </div>
