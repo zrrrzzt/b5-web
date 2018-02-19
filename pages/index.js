@@ -1,43 +1,70 @@
 import { Component } from 'react'
-import Layout from '../components/Layout'
-const qs = require('querystring')
+import Page from '../components/Page'
+import Item from '../components/Item'
+const { getItems } = require('b5-johnson-120-ipip-neo-pi-r')
+const { pack } = require('jcb64')
 
 export default class Index extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      number: 0
+      answers: {},
+      items: false
     }
-    this.addOne = this.addOne.bind(this)
-    this.subtractOne = this.subtractOne.bind(this)
+    this.setAnswer = this.setAnswer.bind(this)
+    this.doSubmit = this.doSubmit.bind(this)
   }
 
   async componentDidMount () {
-    const query = qs.parse(window.location.search.replace('?', ''))
-    this.setState({query: query})
+    const items = getItems('en', true)
+    items.reverse()
+    this.setState({items: items, nowShowing: 0})
   }
 
-  addOne () {
-    const number = this.state.number
-    const newNumber = number + 1
-    this.setState({number: newNumber})
+  setAnswer (e) {
+    e.preventDefault()
+    let answers = this.state.answers
+    let nowShowing = this.state.nowShowing
+    let nextShowing = parseInt(e.target.dataset.num, 10)
+    if (nextShowing > nowShowing) {
+      nowShowing = nextShowing
+    }
+    answers[e.target.dataset.qid] = {
+      domain: e.target.dataset.domain,
+      facet: e.target.dataset.facet,
+      score: e.target.dataset.score
+    }
+    this.setState({
+      answers: answers,
+      nowShowing: nowShowing
+    })
   }
 
-  subtractOne () {
-    const number = this.state.number
-    const newNumber = number - 1
-    this.setState({number: newNumber})
+  doSubmit (e) {
+    const answers = this.state.answers
+    let choices = Object.keys(answers).reduce((prev, current) => {
+      const choice = answers[current]
+      prev.push({
+        domain: choice.domain,
+        facet: choice.facet,
+        score: choice.score
+      })
+      return prev
+    }, [])
+    const b64 = pack(choices)
+    window.location = `/result?id=${b64}`
   }
 
   render () {
     return (
-      <Layout>
-        <div>
-          <h1>Big Five Test</h1>
-          <h2>{this.state.number}</h2>
-          <button onClick={this.subtractOne}>Subtract 1</button>
-          <button onClick={this.addOne}>Add 1</button>
-        </div>
+      <Page>
+        <h1>Big Five Test</h1>
+        {this.state.items !== false && this.state.nowShowing === this.state.items.length
+        ? <button onClick={this.doSubmit}>Submit</button>
+        : null}
+        {this.state.items !== false
+        ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
+        : null}
         <style jsx>
           {`
             h2 {
@@ -57,7 +84,7 @@ export default class Index extends Component {
               text-decoration: none;
               display: inline-block;
               font-size: 16px;
-              width: 150px;
+              width: 200px;
               margin: 10px;
               cursor: pointer;
             }
@@ -70,7 +97,7 @@ export default class Index extends Component {
             }
           `}
         </style>
-      </Layout>
+      </Page>
     )
   }
 }
