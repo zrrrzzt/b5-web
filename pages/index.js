@@ -16,18 +16,28 @@ export default class Index extends Component {
   }
 
   async componentDidMount () {
-    this.setState({items: getItems('en', true)})
+    const items = getItems('en', true)
+    items.reverse()
+    this.setState({items: items, nowShowing: 0})
   }
 
   setAnswer (e) {
     e.preventDefault()
     let answers = this.state.answers
+    let nowShowing = this.state.nowShowing
+    let nextShowing = parseInt(e.target.dataset.num, 10)
+    if (nextShowing > nowShowing) {
+      nowShowing = nextShowing
+    }
     answers[e.target.dataset.qid] = {
       domain: e.target.dataset.domain,
       facet: e.target.dataset.facet,
       score: e.target.dataset.score
     }
-    this.setState({answers: answers})
+    this.setState({
+      answers: answers,
+      nowShowing: nowShowing
+    })
   }
 
   doSubmit (e) {
@@ -49,11 +59,11 @@ export default class Index extends Component {
     return (
       <Page>
         <h1>Big Five Test</h1>
-        {this.state.items !== false
-        ? this.state.items.map(item => <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} />)
+        {this.state.items !== false && this.state.nowShowing === this.state.items.length
+        ? <button onClick={this.doSubmit}>Submit</button>
         : null}
         {this.state.items !== false
-        ? <button onClick={this.doSubmit}>Submit</button>
+        ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
         : null}
         <style jsx>
           {`

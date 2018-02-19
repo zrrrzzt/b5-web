@@ -2,7 +2,7 @@ import Choices from './Choices'
 
 export default ({ data, answers, setAnswer }) => (
   <div className={'item-wrapper'}>
-    <div className={'text'}>{data.text}</div>
+    <div className={'text'}>{data.num}. {data.text}</div>
     {data ? <Choices data={data} answers={answers} setAnswer={setAnswer} /> : null}
     <style jsx>
       {`

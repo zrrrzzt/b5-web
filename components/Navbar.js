@@ -23,6 +23,7 @@ export default ({ username = false }) => (
         color: white;
         margin-bottom: 20px;
         height: 60px;
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
       }
       ul {
         margin: 0;
