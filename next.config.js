@@ -1,5 +1,5 @@
 const glob = require('glob')
-
+/*
 module.exports = {
   webpack (cfg) {
     cfg.plugins = cfg.plugins.filter(plugin => {
@@ -13,6 +13,7 @@ module.exports = {
     return cfg
   }
 }
+*/
 
 module.exports.exportPathMap = () => {
   const pathMap = {}
