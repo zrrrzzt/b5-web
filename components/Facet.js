@@ -1,7 +1,7 @@
 export default ({ data }) => (
   <div>
     <h2>{data.title}</h2>
-    <p>{data.scoreText}</p>
+    <p>Value: {data.score}/20 - {data.scoreText} </p>
     <div>
       {data.text}
     </div>

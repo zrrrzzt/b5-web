@@ -3,6 +3,7 @@ import Facet from './Facet'
 export default ({ data }) => (
   <div className={'domain-wrapper'}>
     <h1>{data.title}</h1>
+    <p>Value: {data.score}/120 - {data.scoreText}</p>
     <p>{data.text}</p>
     {data && data.facets
     ? data.facets.map(facet => <Facet data={facet} />)
@@ -16,6 +17,7 @@ export default ({ data }) => (
           color: black;
           margin-top: 10px;
           padding: 10px;
+          text-align: left;
         }
       `}
     </style>
