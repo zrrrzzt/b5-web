@@ -1,4 +1,4 @@
-import BarChart from 'react-bar-chart'
+import { BarChart } from 'react-easy-chart'
 
 const margin = {top: 20, right: 20, bottom: 30, left: 40}
 
@@ -7,17 +7,17 @@ function prepareData (data) {
 
   data.forEach((item, index) => {
     output.push({
-      'text': item.title,
-      'value': item.score
+      'x': item.title,
+      'y': item.score
     })
   })
   return output
 }
 
-export default ({ data, width }) => (
+export default ({ data, width, yDomainRange }) => (
   <div className={'summary-wrapper'}>
     {data
-    ? <BarChart data={prepareData(data)} width={width} height={400} margin={margin} />
+    ? <BarChart data={prepareData(data)} colorBars axes yDomainRange={yDomainRange} height={400} width={width} margin={margin} />
     : null}
     <style jsx>
       {`
