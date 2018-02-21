@@ -1,21 +1,23 @@
-const SummaryItem = ({ item }) => (
-  <div>
-    <h2>{item.title} - {item.scoreText}</h2>
-    {item.facets.map(facet => <span><strong>{facet.title}</strong> - {facet.scoreText}</span>)}
-    <style jsx>
-      {`
-        span {
-          margin-right: 10px;
-        }
-      `}
-    </style>
-  </div>
-)
+import BarChart from 'react-bar-chart'
 
-export default ({ data }) => (
-  <div className={'summary-wrapper'} >
+const margin = {top: 20, right: 20, bottom: 30, left: 40}
+
+function prepareData (data) {
+  let output = []
+
+  data.forEach((item, index) => {
+    output.push({
+      'text': item.title,
+      'value': item.score
+    })
+  })
+  return output
+}
+
+export default ({ data, width }) => (
+  <div className={'summary-wrapper'}>
     {data
-    ? data.map(item => <SummaryItem item={item} />)
+    ? <BarChart data={prepareData(data)} width={width} height={400} margin={margin} />
     : null}
     <style jsx>
       {`

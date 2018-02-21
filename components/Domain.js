@@ -1,15 +1,22 @@
 import Facet from './Facet'
+import Summary from './Summary'
 
-export default ({ data }) => (
+export default ({ data, width }) => (
   <div className={'domain-wrapper'}>
     <h1>{data.title}</h1>
     <p>Value: {data.score}/120 - {data.scoreText}</p>
     <p>{data.text}</p>
     {data && data.facets
+    ? <Summary data={data.facets} width={width} />
+    : null}
+    {data && data.facets
     ? data.facets.map(facet => <Facet data={facet} />)
     : null}
     <style jsx>
       {`
+        span {
+          margin-right: 10px;
+        }
         .domain-wrapper {
           border-radius: 0;
           background-color: #FFF;

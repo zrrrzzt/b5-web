@@ -12,7 +12,8 @@ export default class Result extends Component {
     this.state = {
       b64: false,
       scores: false,
-      resume: false
+      resume: false,
+      width: 1000
     }
   }
 
@@ -26,17 +27,21 @@ export default class Result extends Component {
       this.setState({
         b64: b64,
         scores: scores,
-        resume: resume
+        resume: resume,
+        width: document.body.clientWidth - 200
       })
+    }
+    window.onresize = () => {
+      this.setState({width: document.body.clientWidth - 200})
     }
   }
 
   render () {
     return (
-      <Page>
+      <Page ref='root'>
         <h1>Big Five Result</h1>
         {this.state.resume !== false
-        ? <Resume data={this.state.resume} />
+        ? <Resume data={this.state.resume} width={this.state.width} />
         : null}
         <style jsx>
           {`
