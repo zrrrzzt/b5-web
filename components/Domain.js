@@ -4,8 +4,8 @@ import Summary from './Summary'
 export default ({ data }) => (
   <div className={'domain-wrapper'}>
     <h1>{data.title}</h1>
-    <p>Value: {data.score}/120 - {data.scoreText}</p>
     <p>{data.text}</p>
+    <p>Score: {data.score}/120 - {data.scoreText}</p>
     {data && data.facets
     ? <Summary data={data.facets} yDomainRange={[4, 20]} />
     : null}

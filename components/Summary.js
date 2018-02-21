@@ -3,21 +3,14 @@ import { BarChart } from 'react-easy-chart'
 const margin = {top: 20, right: 40, bottom: 40, left: 40}
 
 function prepareData (data) {
-  let output = []
-
-  data.forEach((item, index) => {
-    output.push({
-      'x': item.title,
-      'y': item.score
-    })
-  })
+  const output = data.map(item => Object.assign({'x': item.title, 'y': item.score}))
   return output
 }
 
 export default ({ data, yDomainRange }) => (
   <div className={'summary-wrapper'}>
     {data
-    ? <BarChart data={prepareData(data)} colorBars axes height={400} width={600} yDomainRange={yDomainRange} margin={margin} />
+    ? <BarChart data={prepareData(data)} colorBars axes grid height={400} width={600} yDomainRange={yDomainRange} margin={margin} />
     : null}
     <style jsx>
       {`
@@ -31,7 +24,7 @@ export default ({ data, yDomainRange }) => (
           color: black;
           margin-top: 10px;
           padding: 10px;
-          text-align: left;
+          text-align: center;
         }
         @media screen and (max-width: 1000px) {
           .summary-wrapper {
