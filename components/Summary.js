@@ -1,6 +1,6 @@
 import { BarChart } from 'react-easy-chart'
 
-const margin = {top: 20, right: 20, bottom: 30, left: 40}
+const margin = {top: 20, right: 40, bottom: 40, left: 40}
 
 function prepareData (data) {
   let output = []
@@ -14,10 +14,10 @@ function prepareData (data) {
   return output
 }
 
-export default ({ data, width, yDomainRange }) => (
+export default ({ data, yDomainRange }) => (
   <div className={'summary-wrapper'}>
     {data
-    ? <BarChart data={prepareData(data)} colorBars axes yDomainRange={yDomainRange} height={400} width={width} margin={margin} />
+    ? <BarChart data={prepareData(data)} colorBars axes height={400} width={600} yDomainRange={yDomainRange} margin={margin} />
     : null}
     <style jsx>
       {`

@@ -27,12 +27,8 @@ export default class Result extends Component {
       this.setState({
         b64: b64,
         scores: scores,
-        resume: resume,
-        width: document.body.clientWidth - 150
+        resume: resume
       })
-    }
-    window.onresize = () => {
-      this.setState({width: document.body.clientWidth - 150})
     }
   }
 
