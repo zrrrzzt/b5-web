@@ -10,7 +10,7 @@ export default ({ data }) => (
     ? <Summary data={data.facets} yDomainRange={[4, 20]} />
     : null}
     {data && data.facets
-    ? data.facets.map(facet => <Facet data={facet} />)
+    ? data.facets.map((facet, index) => <Facet data={facet} key={index} />)
     : null}
     <style jsx>
       {`

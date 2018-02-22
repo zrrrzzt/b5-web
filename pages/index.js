@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import Page from '../components/Page'
 import Item from '../components/Item'
-const { getItems } = require('b5-johnson-120-ipip-neo-pi-r')
+import Intro from '../components/Intro'
+const { getItems, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
 const { pack } = require('jcb64')
 
 export default class Index extends Component {
@@ -9,16 +10,27 @@ export default class Index extends Component {
     super(props)
     this.state = {
       answers: {},
-      items: false
+      items: false,
+      intro: false,
+      language: 'en'
     }
+    this.setLanguage = this.setLanguage.bind(this)
+    this.startTest = this.startTest.bind(this)
     this.setAnswer = this.setAnswer.bind(this)
     this.doSubmit = this.doSubmit.bind(this)
   }
 
-  async componentDidMount () {
-    const items = getItems('en', true)
+  startTest () {
+    const language = this.state.language
+    const items = getItems(language, true)
     items.reverse()
-    this.setState({items: items, nowShowing: 0})
+    this.setState({items: items, nowShowing: 0, intro: true})
+  }
+
+  setLanguage (e) {
+    e.preventDefault()
+    const language = e.target.dataset.language
+    this.setState({language: language})
   }
 
   setAnswer (e) {
@@ -42,6 +54,7 @@ export default class Index extends Component {
 
   doSubmit (e) {
     const answers = this.state.answers
+    const language = this.state.language
     let choices = Object.keys(answers).reduce((prev, current) => {
       const choice = answers[current]
       prev.push({
@@ -51,7 +64,11 @@ export default class Index extends Component {
       })
       return prev
     }, [])
-    const b64 = pack(choices)
+    const result = {
+      language: language,
+      answers: choices
+    }
+    const b64 = pack(result)
     window.location = `/result?id=${b64}`
   }
 
@@ -59,6 +76,9 @@ export default class Index extends Component {
     return (
       <Page>
         <h1>Big Five Test</h1>
+        {this.state.intro === false
+        ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
+        : null}
         {this.state.items !== false && this.state.nowShowing === this.state.items.length
         ? <button onClick={this.doSubmit}>Submit</button>
         : null}

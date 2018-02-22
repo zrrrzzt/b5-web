@@ -4,6 +4,7 @@ import Resume from '../components/Resume'
 const { unpack } = require('jcb64')
 const calculateScore = require('b5-calculate-score')
 const getResult = require('b5-result-text')
+const { getInfo } = require('b5-result-text')
 const qs = require('querystring')
 
 export default class Result extends Component {
@@ -13,7 +14,8 @@ export default class Result extends Component {
       b64: false,
       scores: false,
       resume: false,
-      width: 1000
+      results: false,
+      language: 'en'
     }
   }
 
@@ -21,13 +23,20 @@ export default class Result extends Component {
     const query = qs.parse(window.location.search.replace('?', ''))
     if (query.id) {
       const b64 = query.id
-      const answers = unpack(b64)
-      const scores = calculateScore({answers: answers})
-      const resume = getResult({scores: scores, lang: 'en'})
+      const results = unpack(b64)
+      const scores = calculateScore({answers: results.answers})
+      const info = getInfo()
+      let language = this.state.language
+      if (info.languages.includes(results.language)) {
+        language = results.language
+      }
+      const resume = getResult({scores: scores, lang: language})
       this.setState({
         b64: b64,
         scores: scores,
-        resume: resume
+        resume: resume,
+        language: results.language,
+        results: results
       })
     }
   }
