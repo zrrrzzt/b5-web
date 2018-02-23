@@ -16,9 +16,11 @@ export default class Result extends Component {
       resume: false,
       results: false,
       language: 'en',
-      viewLanguage: 'en'
+      viewLanguage: 'en',
+      chartWidth: 600
     }
     this.translateResume = this.translateResume.bind(this)
+    this.getWidth = this.getWidth.bind(this)
   }
 
   async componentDidMount () {
@@ -41,7 +43,16 @@ export default class Result extends Component {
         viewLanguage: language,
         results: results
       })
+      setTimeout(() => {
+        this.getWidth()
+      }, 500)
+      window.addEventListener('resize', this.getWidth.bind(this))
     }
+  }
+
+  getWidth () {
+    const width = window.innerWidth - 100
+    this.setState({chartWidth: width >= 500 ? width : 500})
   }
 
   translateResume (e) {
@@ -61,7 +72,7 @@ export default class Result extends Component {
         <h1>Big Five Result</h1>
         {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
         {this.state.resume !== false
-        ? <Resume data={this.state.resume} width={this.state.width} />
+        ? <Resume data={this.state.resume} width={this.state.chartWidth} />
         : null}
         <style jsx>
           {`

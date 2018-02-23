@@ -1,13 +1,13 @@
 import Facet from './Facet'
 import Summary from './Summary'
 
-export default ({ data }) => (
+export default ({ data, chartWidth }) => (
   <div className={'domain-wrapper'}>
     <h1>{data.title}</h1>
     <p>{data.text}</p>
     <p>Score: {data.score}/120 - {data.scoreText}</p>
     {data && data.facets
-    ? <Summary data={data.facets} yDomainRange={[4, 20]} />
+    ? <Summary data={data.facets} yDomainRange={[4, 20]} chartWidth={chartWidth} />
     : null}
     {data && data.facets
     ? data.facets.map((facet, index) => <Facet data={facet} key={index} />)
