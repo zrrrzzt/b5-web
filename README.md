@@ -4,7 +4,49 @@
 
 # b5-web
 
-Static site for big five personality tests
+Website for big five personality test.
+
+Let's you answer 120 questions from the [Johnson 120 IPIP-NEO-PI-R](http://ipip.ori.org/30FacetNEO-PI-RItems.htm) items.
+
+Runs on Node/Next.js but can be exported to a static site.
+
+See it live: [b5.allthethings.win](https://b5.allthethings.win/)
+
+## Deploy your own to ZEIT/Now
+
+### Directly from the repo
+
+```
+$ now https://github.com/zrrrzzt/b5-web
+```
+
+### As a static site
+
+Clone the repo.
+
+Install dependencies.
+
+```
+$ npm install
+```
+
+Export the site to a static version
+
+```
+$ npm run export
+```
+
+Deploy the export to Now
+
+```
+$ now --static out --name b5-web
+```
+
+## Related
+- [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) The npm module with questions
+- [b5-calculate-score](https://github.com/zrrrzzt/b5-calculate-score) Module for calculating score
+- [b5-result-text](https://github.com/zrrrzzt/b5-result-text) Create a text resume based on the score
+- [bigfive-web](https://github.com/maccyber/bigfive-web) Different approach to testsite based on microservices
 
 ## License
 
