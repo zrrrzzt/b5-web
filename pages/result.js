@@ -43,9 +43,7 @@ export default class Result extends Component {
         viewLanguage: language,
         results: results
       })
-      setTimeout(() => {
-        this.getWidth()
-      }, 500)
+      document.addEventListener('DOMContentLoaded', this.getWidth(), false)
       window.addEventListener('resize', this.getWidth.bind(this))
     }
   }
