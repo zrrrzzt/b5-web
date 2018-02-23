@@ -4,8 +4,10 @@ import Summary from './Summary'
 export default ({ data, chartWidth }) => (
   <div className={'domain-wrapper'}>
     <h1>{data.title}</h1>
-    <p>{data.text}</p>
+    <p><em>{data.shortDescription}</em></p>
     <p>Score: {data.score}/120 - {data.scoreText}</p>
+    <p><strong>{data.text}</strong></p>
+    <p>{data.description}</p>
     {data && data.facets
     ? <Summary data={data.facets} yDomainRange={[4, 20]} chartWidth={chartWidth} />
     : null}
