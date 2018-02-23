@@ -15,8 +15,10 @@ export default class Result extends Component {
       scores: false,
       resume: false,
       results: false,
-      language: 'en'
+      language: 'en',
+      viewLanguage: 'en'
     }
+    this.translateResume = this.translateResume.bind(this)
   }
 
   async componentDidMount () {
@@ -36,15 +38,28 @@ export default class Result extends Component {
         scores: scores,
         resume: resume,
         language: results.language,
+        viewLanguage: language,
         results: results
       })
     }
   }
 
+  translateResume (e) {
+    e.preventDefault()
+    const language = e.target.dataset.language
+    const scores = this.state.scores
+    const resume = getResult({scores: scores, lang: language})
+    this.setState({
+      resume: resume,
+      viewLanguage: language
+    })
+  }
+
   render () {
     return (
-      <Page ref='root'>
+      <Page>
         <h1>Big Five Result</h1>
+        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
         {this.state.resume !== false
         ? <Resume data={this.state.resume} width={this.state.width} />
         : null}
@@ -74,9 +89,11 @@ export default class Result extends Component {
             button:focus {
               outline:0;
             }
-            
             button:active {
               outline: 0;
+            }
+            .isActive {
+              background: yellow;
             }
           `}
         </style>

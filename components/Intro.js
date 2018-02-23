@@ -46,10 +46,14 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
           color: black;
           margin-top: 10px;
           padding: 10px;
+          display: flex;
+          flex-direction: column;
         }
         .language-wrapper {
           display: flex;
           justify-content: space-evenly;
+          width: 600px;
+          align-self: center;
         }
         .start-wrapper {
           padding: 10px;
@@ -61,6 +65,8 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
           }
           .language-wrapper {
             flex-direction: column;
+            width: auto;
+            min-width: 300px;
         }
       `}
     </style>

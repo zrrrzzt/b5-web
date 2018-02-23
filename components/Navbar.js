@@ -6,10 +6,7 @@ export default ({ username = false }) => (
           <img style={{ width: '32px' }} src={'static/favicon-32x32.png'} />
         </a>
       </li>
-      <li><span className='app-name'>Big Five</span></li>
-    </ul>
-    <ul className={'right'}>
-      <li><a href='/'>Home</a></li>
+      <li><span className='app-name'>Big Five Test</span></li>
     </ul>
     <style jsx>{`
       img {
@@ -52,7 +49,7 @@ export default ({ username = false }) => (
         color: #6AC4AE;
         text-decoration: underline;
       }
-      @media screen and (max-width: 800px) {
+      @media screen and (max-width: 400px) {
         .app-name {
           display: none;
         }
