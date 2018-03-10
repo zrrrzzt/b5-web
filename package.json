@@ -19,13 +19,20 @@
     "type": "git",
     "url": "git+https://github.com/zrrrzzt/b5-web.git"
   },
-  "keywords": [],
+  "keywords": [
+    "big five",
+    "personality test",
+    "next.js"
+  ],
   "author": "Geir Gåsodden <geir.gasodden@pythonia.no> (https://github.com/zrrrzzt)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zrrrzzt/b5-web/issues"
   },
   "homepage": "https://github.com/zrrrzzt/b5-web#readme",
+  "engines": {
+    "node": ">= 8.10.0"
+  },
   "dependencies": {
     "b5-calculate-score": "1.0.3",
     "b5-johnson-120-ipip-neo-pi-r": "1.1.7",
