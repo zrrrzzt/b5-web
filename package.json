@@ -29,7 +29,7 @@
   "dependencies": {
     "b5-calculate-score": "1.0.3",
     "b5-johnson-120-ipip-neo-pi-r": "1.1.7",
-    "b5-result-text": "1.1.1",
+    "b5-result-text": "1.2.0",
     "jcb64": "1.1.1",
     "next": "5.0.0",
     "react": "16.2.0",
