@@ -7,8 +7,9 @@ function prepareData (data) {
   return output
 }
 
-export default ({ data, yDomainRange, chartWidth }) => (
+export default ({ title, data, yDomainRange, chartWidth }) => (
   <div className={'summary-wrapper'}>
+    {title ? <h1>{title}</h1> : null}
     {data
     ? <BarChart data={prepareData(data)} colorBars axes grid height={400} width={chartWidth} yDomainRange={yDomainRange} margin={margin} />
     : null}

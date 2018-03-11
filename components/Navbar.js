@@ -1,5 +1,5 @@
 export default ({ username = false }) => (
-  <nav>
+  <nav className={'no-print'}>
     <ul className={'left'}>
       <li>
         <a href='/'>
@@ -7,6 +7,11 @@ export default ({ username = false }) => (
         </a>
       </li>
       <li><span className='app-name'>Big Five Test</span></li>
+    </ul>
+    <ul className={'right'}>
+      <li>
+        <a href='/compare'>Compare</a>
+      </li>
     </ul>
     <style jsx>{`
       img {
@@ -48,6 +53,11 @@ export default ({ username = false }) => (
       a:hover {
         color: #6AC4AE;
         text-decoration: underline;
+      }
+      @media print {    
+        .no-print, .no-print * {
+          display: none !important;
+        }
       }
       @media screen and (max-width: 400px) {
         .app-name {
