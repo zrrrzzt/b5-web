@@ -9,11 +9,11 @@ export default ({ data, chartWidth }) => (
     <p><strong>{data.text}</strong></p>
     <p>{data.description}</p>
     {data && data.facets
-    ? <Summary data={data.facets} yDomainRange={[0, 20]} chartWidth={chartWidth} />
-    : null}
+      ? <Summary data={data.facets} yDomainRange={[0, 20]} chartWidth={chartWidth} />
+      : null}
     {data && data.facets
-    ? data.facets.map((facet, index) => <Facet data={facet} key={index} />)
-    : null}
+      ? data.facets.map((facet, index) => <Facet data={facet} key={index} />)
+      : null}
     <style jsx>
       {`
         span {

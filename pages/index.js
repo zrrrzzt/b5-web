@@ -77,14 +77,14 @@ export default class Index extends Component {
       <Page>
         <h1>Big Five Test</h1>
         {this.state.intro === false
-        ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
-        : null}
+          ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
+          : null}
         {this.state.items !== false && this.state.nowShowing === this.state.items.length
-        ? <button onClick={this.doSubmit}>Submit</button>
-        : null}
+          ? <button onClick={this.doSubmit}>Submit</button>
+          : null}
         {this.state.items !== false
-        ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
-        : null}
+          ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
+          : null}
         <style jsx>
           {`
             h2 {

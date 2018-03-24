@@ -70,8 +70,8 @@ export default class Result extends Component {
         <h1>Big Five Result</h1>
         {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
         {this.state.resume !== false
-        ? <Resume data={this.state.resume} width={this.state.chartWidth} />
-        : null}
+          ? <Resume data={this.state.resume} width={this.state.chartWidth} />
+          : null}
         <style jsx>
           {`
             h2 {
