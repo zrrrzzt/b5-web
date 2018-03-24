@@ -7,6 +7,7 @@ const { unpack } = require('jcb64')
 const { getInfo } = require('b5-result-text')
 const qs = require('querystring')
 const { parse } = require('url')
+const FileSaver = require('file-saver')
 
 export default class Compare extends Component {
   constructor (props) {
@@ -20,6 +21,7 @@ export default class Compare extends Component {
     this.addComparison = this.addComparison.bind(this)
     this.getWidth = this.getWidth.bind(this)
     this.translate = this.translate.bind(this)
+    this.saveComparison = this.saveComparison.bind(this)
   }
 
   async componentDidMount () {
@@ -53,6 +55,13 @@ export default class Compare extends Component {
     compressedDataField.value = ''
   }
 
+  saveComparison (e) {
+    e.preventDefault()
+    const comparisons = this.state.comparisons
+    const file = new window.File([JSON.stringify(comparisons, null, 2)], 'b5-comparison.json', {type: 'text/json;charset=utf-8'})
+    FileSaver.saveAs(file)
+  }
+
   translate (e) {
     e.preventDefault()
     const language = e.target.dataset.language
@@ -76,6 +85,7 @@ export default class Compare extends Component {
         {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang}</button>)}
         <AddComparison addComparison={this.addComparison} />
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
+        {this.state.comparisons.length > 0 ? <button onClick={this.saveComparison}>Save comparison</button> : null}
         <style jsx>
           {`
             button {
