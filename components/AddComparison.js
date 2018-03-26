@@ -1,7 +1,7 @@
 export default ({ addComparison }) => (
   <form onSubmit={addComparison} className={'no-print'}>
-    <input type='text' id='comparisonName' placeholder='Name for comparison' />
-    <input type='text' id='comparisonData' placeholder='URL or id for comparison' />
+    <input type='text' id='comparisonName' placeholder='Name for comparison' required />
+    <input type='text' id='comparisonData' placeholder='URL or id for comparison' required />
     <br />
     <button type='submit'>Add</button>
     <style jsx>
@@ -20,13 +20,16 @@ export default ({ addComparison }) => (
         }
         button {
           background-color: white;
-          border-radius: 3px;
+          border-radius: 2px;
           color: black;
           padding: 15px 32px;
           text-align: center;
           text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          width: 200px;
+          margin: 10px;
           cursor: pointer;
-          transition: all 0.3s ease 0s;
         }
         button:focus {
           outline:0;

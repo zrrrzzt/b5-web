@@ -2,6 +2,7 @@ import { Component } from 'react'
 import Page from '../components/Page'
 import AddComparison from '../components/AddComparison'
 import Comparisons from '../components/Comparisons'
+import LoadComparison from '../components/LoadComparison'
 import repackResults from '../components/repack-results'
 const { unpack } = require('jcb64')
 const { getInfo } = require('b5-result-text')
@@ -21,6 +22,7 @@ export default class Compare extends Component {
     this.addComparison = this.addComparison.bind(this)
     this.getWidth = this.getWidth.bind(this)
     this.translate = this.translate.bind(this)
+    this.loadComparison = this.loadComparison.bind(this)
     this.saveComparison = this.saveComparison.bind(this)
   }
 
@@ -62,6 +64,26 @@ export default class Compare extends Component {
     FileSaver.saveAs(file)
   }
 
+  loadComparison (e) {
+    e.preventDefault()
+    const reader = new window.FileReader()
+    const files = e.target.files
+    reader.onload = () => {
+      const text = reader.result
+      const json = JSON.parse(text)
+      const language = this.state.viewLanguage
+      const scores = repackResults(json, language)
+      this.setState({
+        comparisons: json,
+        scores: scores,
+        chartWidth: 600
+      })
+    }
+    if (files.length === 1) {
+      reader.readAsText(files[0])
+    }
+  }
+
   translate (e) {
     e.preventDefault()
     const language = e.target.dataset.language
@@ -86,6 +108,7 @@ export default class Compare extends Component {
         <AddComparison addComparison={this.addComparison} />
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
         {this.state.comparisons.length > 0 ? <button onClick={this.saveComparison}>Save comparison</button> : null}
+        {this.state.comparisons.length === 0 ? <LoadComparison handler={this.loadComparison} /> : null}
         <style jsx>
           {`
             button {
