@@ -6,6 +6,7 @@ const calculateScore = require('b5-calculate-score')
 const getResult = require('b5-result-text')
 const { getInfo } = require('b5-result-text')
 const qs = require('querystring')
+const FileSaver = require('file-saver')
 
 export default class Result extends Component {
   constructor (props) {
@@ -19,8 +20,9 @@ export default class Result extends Component {
       viewLanguage: 'en',
       chartWidth: 600
     }
-    this.translateResume = this.translateResume.bind(this)
     this.getWidth = this.getWidth.bind(this)
+    this.saveResults = this.saveResults.bind(this)
+    this.translateResume = this.translateResume.bind(this)
   }
 
   async componentDidMount () {
@@ -53,6 +55,13 @@ export default class Result extends Component {
     this.setState({chartWidth: width >= 500 ? width : 500})
   }
 
+  saveResults (e) {
+    e.preventDefault()
+    const results = this.state.results
+    const file = new window.File([JSON.stringify(results, null, 2)], 'b5-results.json', {type: 'text/json;charset=utf-8'})
+    FileSaver.saveAs(file)
+  }
+
   translateResume (e) {
     e.preventDefault()
     const language = e.target.dataset.language
@@ -72,6 +81,7 @@ export default class Result extends Component {
         {this.state.resume !== false
           ? <Resume data={this.state.resume} width={this.state.chartWidth} />
           : null}
+        {this.state.resume !== false ? <button onClick={this.saveResults}>Save results</button> : null}
         <style jsx>
           {`
             h2 {
