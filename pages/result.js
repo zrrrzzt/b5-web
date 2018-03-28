@@ -1,6 +1,8 @@
 import { Component } from 'react'
 import Page from '../components/Page'
 import Resume from '../components/Resume'
+import AddResults from '../components/AddResults'
+const { parse } = require('url')
 const { unpack } = require('jcb64')
 const calculateScore = require('b5-calculate-score')
 const getResult = require('b5-result-text')
@@ -20,6 +22,7 @@ export default class Result extends Component {
       viewLanguage: 'en',
       chartWidth: 600
     }
+    this.addResults = this.addResults.bind(this)
     this.getWidth = this.getWidth.bind(this)
     this.saveResults = this.saveResults.bind(this)
     this.translateResume = this.translateResume.bind(this)
@@ -45,14 +48,44 @@ export default class Result extends Component {
         viewLanguage: language,
         results: results
       })
-      document.addEventListener('DOMContentLoaded', this.getWidth(), false)
-      window.addEventListener('resize', this.getWidth.bind(this))
     }
+    document.addEventListener('DOMContentLoaded', this.getWidth(), false)
+    window.addEventListener('resize', this.getWidth.bind(this))
   }
 
   getWidth () {
     const width = window.innerWidth - 100
     this.setState({chartWidth: width >= 500 ? width : 500})
+  }
+
+  addResults (e) {
+    e.preventDefault()
+    let b64 = false
+    const compressedDataField = document.getElementById('resultData')
+    if (compressedDataField.value.startsWith('http')) {
+      const url = parse(compressedDataField.value)
+      const query = qs.parse(url.search.replace('?', ''))
+      b64 = query.id
+    } else {
+      b64 = compressedDataField.value
+    }
+    const results = unpack(b64)
+    const scores = calculateScore({answers: results.answers})
+    const info = getInfo()
+    let language = this.state.language
+    if (info.languages.includes(results.language)) {
+      language = results.language
+    }
+    const resume = getResult({scores: scores, lang: language})
+    this.setState({
+      b64: b64,
+      scores: scores,
+      resume: resume,
+      language: results.language,
+      viewLanguage: language,
+      results: results
+    })
+    compressedDataField.value = ''
   }
 
   saveResults (e) {
@@ -78,6 +111,7 @@ export default class Result extends Component {
       <Page>
         <h1>Big Five Result</h1>
         {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
+        {this.state.resume === false ? <AddResults addResults={this.addResults} /> : null}
         {this.state.resume !== false
           ? <Resume data={this.state.resume} width={this.state.chartWidth} />
           : null}

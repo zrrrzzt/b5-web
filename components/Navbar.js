@@ -1,5 +1,5 @@
 export default ({ username = false }) => (
-  <nav className={'no-print'}>
+  <nav>
     <ul className={'left'}>
       <li>
         <a href='/'>
@@ -9,6 +9,9 @@ export default ({ username = false }) => (
       <li><span className='app-name'>Big Five Test</span></li>
     </ul>
     <ul className={'right'}>
+      <li>
+        <a href='/result'>Result</a>
+      </li>
       <li>
         <a href='/compare'>Compare</a>
       </li>
@@ -30,9 +33,9 @@ export default ({ username = false }) => (
       ul {
         margin: 0;
         padding: 0;
+        width: 100%;
         list-style-type: none;
         display: flex;
-        align-items: center;
       }
       ul.left {
         justify-content: flex-start;
@@ -53,11 +56,6 @@ export default ({ username = false }) => (
       a:hover {
         color: #6AC4AE;
         text-decoration: underline;
-      }
-      @media print {    
-        .no-print, .no-print * {
-          display: none !important;
-        }
       }
       @media screen and (max-width: 400px) {
         .app-name {
