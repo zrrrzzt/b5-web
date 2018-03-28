@@ -2,7 +2,7 @@ import { Component } from 'react'
 import Page from '../components/Page'
 import AddComparison from '../components/AddComparison'
 import Comparisons from '../components/Comparisons'
-import LoadComparison from '../components/LoadComparison'
+import LoadFile from '../components/LoadFile'
 import repackResults from '../components/repack-results'
 const { unpack } = require('jcb64')
 const { getInfo } = require('b5-result-text')
@@ -106,7 +106,7 @@ export default class Compare extends Component {
         <AddComparison addComparison={this.addComparison} />
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
         {this.state.comparisons.length > 0 ? <button onClick={this.saveComparison}>Save comparison</button> : null}
-        {this.state.comparisons.length === 0 ? <LoadComparison handler={this.loadComparison} /> : null}
+        {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle={'Upload'} /> : null}
         <style jsx>
           {`
             button {
