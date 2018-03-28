@@ -54,7 +54,7 @@ export default class Result extends Component {
   }
 
   getWidth () {
-    const width = window.innerWidth - 100
+    const width = document.documentElement.clientWidth * 0.9
     this.setState({chartWidth: width >= 500 ? width : 500})
   }
 
@@ -110,6 +110,7 @@ export default class Result extends Component {
     return (
       <Page>
         <h1>Big Five Result</h1>
+        <h1>{this.state.chartWidth}</h1>
         {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
         {this.state.resume === false ? <AddResults addResults={this.addResults} /> : null}
         {this.state.resume !== false

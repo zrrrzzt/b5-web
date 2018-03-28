@@ -50,8 +50,7 @@ export default class Compare extends Component {
     const scores = repackResults(comparisons, language)
     this.setState({
       comparisons: comparisons,
-      scores: scores,
-      chartWidth: 600
+      scores: scores
     })
     nameField.value = ''
     compressedDataField.value = ''
@@ -75,8 +74,7 @@ export default class Compare extends Component {
       const scores = repackResults(json, language)
       this.setState({
         comparisons: json,
-        scores: scores,
-        chartWidth: 600
+        scores: scores
       })
     }
     if (files.length === 1) {
@@ -96,7 +94,7 @@ export default class Compare extends Component {
   }
 
   getWidth () {
-    const width = window.innerWidth - 100
+    const width = document.documentElement.clientWidth * 0.9
     this.setState({chartWidth: width >= 500 ? width : 500})
   }
 
