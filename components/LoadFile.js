@@ -1,12 +1,12 @@
 function triggerUpload (e) {
   e.preventDefault()
-  const fileField = document.getElementById('uploadFileField')
+  const fileField = e.target.parentNode.children[0]
   fileField.click()
 }
 
 export default ({ handler, buttonTitle }) => (
   <div>
-    <input type='file' accept='.json' id={'uploadFileField'} onChange={handler} />
+    <input type='file' accept='.json' onChange={handler} />
     <button onClick={triggerUpload}>{buttonTitle}</button>
     <style jsx>
       {`
