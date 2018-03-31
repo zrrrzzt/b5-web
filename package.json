@@ -1,6 +1,6 @@
 {
   "name": "b5-web",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Static site for big five personality tests",
   "main": "index.js",
   "scripts": {
