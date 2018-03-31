@@ -61,6 +61,7 @@ export default class Compare extends Component {
     e.preventDefault()
     const reader = new window.FileReader()
     const files = e.target.files
+    const fileField = e.target
     const nameField = document.getElementById('comparisonName')
     reader.onload = () => {
       const text = reader.result
@@ -74,8 +75,11 @@ export default class Compare extends Component {
         scores: scores
       })
       nameField.value = ''
+      fileField.value = ''
     }
-    reader.readAsText(files[0])
+    if (files.length === 1) {
+      reader.readAsText(files[0])
+    }
   }
 
   saveComparison (e) {

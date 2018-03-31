@@ -31,11 +31,11 @@
   },
   "homepage": "https://github.com/zrrrzzt/b5-web#readme",
   "engines": {
-    "node": ">= 8.10.0"
+    "node": ">= 8.11.1"
   },
   "now": {
     "engines": {
-      "node": "8.10.0"
+      "node": "8.11.1"
     }
   },
   "dependencies": {
