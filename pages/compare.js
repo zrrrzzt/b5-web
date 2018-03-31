@@ -23,6 +23,7 @@ export default class Compare extends Component {
     this.getWidth = this.getWidth.bind(this)
     this.translate = this.translate.bind(this)
     this.loadComparison = this.loadComparison.bind(this)
+    this.loadResult = this.loadResult.bind(this)
     this.saveComparison = this.saveComparison.bind(this)
   }
 
@@ -54,6 +55,27 @@ export default class Compare extends Component {
     })
     nameField.value = ''
     compressedDataField.value = ''
+  }
+
+  loadResult (e) {
+    e.preventDefault()
+    const reader = new window.FileReader()
+    const files = e.target.files
+    const nameField = document.getElementById('comparisonName')
+    reader.onload = () => {
+      const text = reader.result
+      const data = JSON.parse(text)
+      const comparisons = this.state.comparisons
+      comparisons.push({name: nameField.value, data: data})
+      const language = this.state.viewLanguage
+      const scores = repackResults(comparisons, language)
+      this.setState({
+        comparisons: comparisons,
+        scores: scores
+      })
+      nameField.value = ''
+    }
+    reader.readAsText(files[0])
   }
 
   saveComparison (e) {
@@ -104,9 +126,10 @@ export default class Compare extends Component {
         <h1 className={'no-print'}>Big five comparison</h1>
         {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang}</button>)}
         <AddComparison addComparison={this.addComparison} />
+        <LoadFile handler={this.loadResult} buttonTitle={'Load result'} />
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
         {this.state.comparisons.length > 0 ? <button onClick={this.saveComparison}>Save comparison</button> : null}
-        {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle={'Upload'} /> : null}
+        {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle={'Load comparison'} /> : null}
         <style jsx>
           {`
             button {
