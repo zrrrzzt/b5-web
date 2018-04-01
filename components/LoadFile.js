@@ -1,11 +1,13 @@
+import { Fragment } from 'react'
+
 function triggerUpload (e) {
   e.preventDefault()
-  const fileField = e.target.parentNode.children[0]
+  const fileField = e.target.previousSibling
   fileField.click()
 }
 
 export default ({ handler, buttonTitle }) => (
-  <div>
+  <Fragment>
     <input type='file' accept='.json' onChange={handler} />
     <button onClick={triggerUpload}>{buttonTitle}</button>
     <style jsx>
@@ -38,5 +40,5 @@ export default ({ handler, buttonTitle }) => (
         }
       `}
     </style>
-  </div>
+  </Fragment>
 )
