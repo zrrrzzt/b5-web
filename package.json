@@ -12,6 +12,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "clear": "rm -rf .next && rm -rf out",
     "export": "next build && next export",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
   },

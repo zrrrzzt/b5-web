@@ -25,6 +25,7 @@ export default class Compare extends Component {
     this.loadComparison = this.loadComparison.bind(this)
     this.loadResult = this.loadResult.bind(this)
     this.saveComparison = this.saveComparison.bind(this)
+    this.updateScores = this.updateScores.bind(this)
   }
 
   async componentDidMount () {
@@ -45,16 +46,20 @@ export default class Compare extends Component {
       id = compressedDataField.value
     }
     const data = unpack(id)
+    this.updateScores({name: nameField.value, data: data})
+    nameField.value = ''
+    compressedDataField.value = ''
+  }
+
+  updateScores (data) {
     const comparisons = this.state.comparisons
-    comparisons.push({name: nameField.value, data: data})
+    comparisons.push(data)
     const language = this.state.viewLanguage
     const scores = repackResults(comparisons, language)
     this.setState({
       comparisons: comparisons,
       scores: scores
     })
-    nameField.value = ''
-    compressedDataField.value = ''
   }
 
   loadResult (e) {
@@ -66,14 +71,7 @@ export default class Compare extends Component {
     reader.onload = () => {
       const text = reader.result
       const data = JSON.parse(text)
-      const comparisons = this.state.comparisons
-      comparisons.push({name: nameField.value, data: data})
-      const language = this.state.viewLanguage
-      const scores = repackResults(comparisons, language)
-      this.setState({
-        comparisons: comparisons,
-        scores: scores
-      })
+      this.updateScores({name: nameField.value, data: data})
       nameField.value = ''
       fileField.value = ''
     }
