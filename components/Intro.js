@@ -9,10 +9,10 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
       <li>Your spontaneous answer is usually the most accurate.</li>
     </ul>
     <p><strong>Select test language</strong></p>
-    <div className={'language-wrapper'}>
+    <div className={'button-wrapper'}>
       {info.languages.map((lang, index) => <button data-language={lang} className={selectedLanguage === lang ? 'isActive' : ''} onClick={setLanguage} key={index}>{lang}</button>)}
     </div>
-    <div className={'start-wrapper'}>
+    <div className={'button-wrapper'}>
       <button onClick={startTest}>Start test</button>
     </div>
     <style jsx>
@@ -22,17 +22,21 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
         }
         button {
           background-color: white;
-          border-radius: 3px;
+          border-radius: 2px;
           color: black;
           padding: 15px 32px;
           text-align: center;
           text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          width: 200px;
+          margin: 10px;
           cursor: pointer;
-          transition: all 0.3s ease 0s;
         }
         button:focus {
           outline:0;
         }
+        
         button:active {
           outline: 0;
         }
@@ -49,22 +53,20 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
           display: flex;
           flex-direction: column;
         }
-        .language-wrapper {
+        .button-wrapper {
           display: flex;
           justify-content: space-evenly;
           width: 600px;
           align-self: center;
         }
-        .start-wrapper {
-          padding: 10px;
-          margin: 10px;
-        }
         @media screen and (max-width: 700px) {
           button {
             margin-bottom: 5px;
+            width: auto;
           }
-          .language-wrapper {
+          .button-wrapper {
             flex-direction: column;
+            justify-content: center;
             width: auto;
             min-width: 300px;
         }
