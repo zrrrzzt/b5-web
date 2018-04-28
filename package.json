@@ -14,7 +14,8 @@
     "start": "next start",
     "clear": "rm -rf .next && rm -rf out",
     "export": "next build && next export",
-    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
+    "deploy": "now --static out --name b5-web"
   },
   "repository": {
     "type": "git",
