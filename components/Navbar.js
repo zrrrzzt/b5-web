@@ -6,7 +6,7 @@ export default ({ username = false }) => (
       <li>
         <Link prefetch href='/'>
           <a>
-            <img style={{ width: '32px' }} src={'static/favicon-32x32.png'} />
+            <img style={{ width: '32px' }} src={'/static/favicon-32x32.png'} />
           </a>
         </Link>
       </li>
