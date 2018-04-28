@@ -1,19 +1,27 @@
+import Link from 'next/link'
+
 export default ({ username = false }) => (
   <nav>
     <ul className={'left'}>
       <li>
-        <a href='/'>
-          <img style={{ width: '32px' }} src={'static/favicon-32x32.png'} />
-        </a>
+        <Link prefetch href='/'>
+          <a>
+            <img style={{ width: '32px' }} src={'static/favicon-32x32.png'} />
+          </a>
+        </Link>
       </li>
       <li><span className='app-name'>Big Five Test</span></li>
     </ul>
     <ul className={'right'}>
       <li>
-        <a href='/result'>Result</a>
+        <Link prefetch href='/result'>
+          <a>Result</a>
+        </Link>
       </li>
       <li>
-        <a href='/compare'>Compare</a>
+        <Link prefetch href='/compare'>
+          <a>Compare</a>
+        </Link>
       </li>
     </ul>
     <style jsx>{`
