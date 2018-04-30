@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/zrrrzzt/b5-web.svg?branch=master)](https://travis-ci.org/zrrrzzt/b5-web)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![Greenkeeper badge](https://badges.greenkeeper.io/zrrrzzt/b5-web.svg)](https://greenkeeper.io/)
 
 # b5-web
 
