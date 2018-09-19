@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "b5-calculate-score": "1.0.4",
-    "b5-johnson-120-ipip-neo-pi-r": "1.1.21",
+    "b5-johnson-120-ipip-neo-pi-r": "1.1.22",
     "b5-result-text": "1.3.0",
     "file-saver": "1.3.8",
     "jcb64": "1.1.3",
