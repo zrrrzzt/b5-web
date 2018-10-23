@@ -2,7 +2,7 @@ import { Component } from 'react'
 import Page from '../components/Page'
 import Item from '../components/Item'
 import Intro from '../components/Intro'
-const { getItems, getInfo } = require('b5-johnson-120-ipip-neo-pi-r')
+const { getItems, getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
 const { pack } = require('jcb64')
 
 export default class Index extends Component {
