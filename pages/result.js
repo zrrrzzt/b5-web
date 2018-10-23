@@ -5,7 +5,7 @@ import AddResults from '../components/AddResults'
 import LoadFile from '../components/LoadFile'
 const { parse } = require('url')
 const { unpack } = require('jcb64')
-const calculateScore = require('b5-calculate-score')
+const calculateScore = require('@alheimsins/bigfive-calculate-score')
 const getResult = require('@alheimsins/b5-result-text')
 const { getInfo } = require('@alheimsins/b5-result-text')
 const qs = require('querystring')
