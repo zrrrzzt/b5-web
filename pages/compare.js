@@ -46,7 +46,7 @@ export default class Compare extends Component {
       id = compressedDataField.value
     }
     const data = unpack(id)
-    this.updateScores({name: nameField.value, data: data})
+    this.updateScores({ name: nameField.value, data: data })
     nameField.value = ''
     compressedDataField.value = ''
   }
@@ -71,7 +71,7 @@ export default class Compare extends Component {
     reader.onload = () => {
       const text = reader.result
       const data = JSON.parse(text)
-      this.updateScores({name: nameField.value, data: data})
+      this.updateScores({ name: nameField.value, data: data })
       nameField.value = ''
       fileField.value = ''
     }
@@ -83,7 +83,7 @@ export default class Compare extends Component {
   saveComparison (e) {
     e.preventDefault()
     const comparisons = this.state.comparisons
-    const file = new window.File([JSON.stringify(comparisons, null, 2)], 'b5-comparison.json', {type: 'text/json;charset=utf-8'})
+    const file = new window.File([JSON.stringify(comparisons, null, 2)], 'b5-comparison.json', { type: 'text/json;charset=utf-8' })
     FileSaver.saveAs(file)
   }
 
@@ -119,7 +119,7 @@ export default class Compare extends Component {
 
   getWidth () {
     const width = document.documentElement.clientWidth * 0.9
-    this.setState({chartWidth: width >= 500 ? width : 500})
+    this.setState({ chartWidth: width >= 500 ? width : 500 })
   }
 
   render () {

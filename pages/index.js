@@ -24,13 +24,13 @@ export default class Index extends Component {
     const language = this.state.language
     const items = getItems(language, true)
     items.reverse()
-    this.setState({items: items, nowShowing: 0, intro: true})
+    this.setState({ items: items, nowShowing: 0, intro: true })
   }
 
   setLanguage (e) {
     e.preventDefault()
     const language = e.target.dataset.language
-    this.setState({language: language})
+    this.setState({ language: language })
   }
 
   setAnswer (e) {

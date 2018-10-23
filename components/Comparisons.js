@@ -1,6 +1,6 @@
 import Summary from './Summary'
 
-const DomainScores = ({data, chartWidth}) => {
+const DomainScores = ({ data, chartWidth }) => {
   return (
     <div>
       <Summary title={data.title} data={data.scores} yDomainRange={[0, 120]} chartWidth={chartWidth} />
@@ -10,7 +10,7 @@ const DomainScores = ({data, chartWidth}) => {
   )
 }
 
-const FacetScores = ({data, chartWidth}) => {
+const FacetScores = ({ data, chartWidth }) => {
   return (
     <div>
       <Summary title={data.title} data={data.scores} yDomainRange={[0, 20]} chartWidth={chartWidth} />
@@ -19,7 +19,7 @@ const FacetScores = ({data, chartWidth}) => {
   )
 }
 
-const Facets = ({facets, chartWidth}) => {
+const Facets = ({ facets, chartWidth }) => {
   return facets.map((facet, index) => <FacetScores data={facet} chartWidth={chartWidth} key={index} />)
 }
 

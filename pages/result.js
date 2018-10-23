@@ -35,13 +35,13 @@ export default class Result extends Component {
     if (query.id) {
       const b64 = query.id
       const results = unpack(b64)
-      const scores = calculateScore({answers: results.answers})
+      const scores = calculateScore({ answers: results.answers })
       const info = getInfo()
       let language = this.state.language
       if (info.languages.includes(results.language)) {
         language = results.language
       }
-      const resume = getResult({scores: scores, lang: language})
+      const resume = getResult({ scores: scores, lang: language })
       this.setState({
         b64: b64,
         scores: scores,
@@ -57,7 +57,7 @@ export default class Result extends Component {
 
   getWidth () {
     const width = document.documentElement.clientWidth * 0.9
-    this.setState({chartWidth: width >= 500 ? width : 500})
+    this.setState({ chartWidth: width >= 500 ? width : 500 })
   }
 
   addResults (e) {
@@ -72,13 +72,13 @@ export default class Result extends Component {
       b64 = compressedDataField.value
     }
     const results = unpack(b64)
-    const scores = calculateScore({answers: results.answers})
+    const scores = calculateScore({ answers: results.answers })
     const info = getInfo()
     let language = this.state.language
     if (info.languages.includes(results.language)) {
       language = results.language
     }
-    const resume = getResult({scores: scores, lang: language})
+    const resume = getResult({ scores: scores, lang: language })
     this.setState({
       b64: b64,
       scores: scores,
@@ -97,13 +97,13 @@ export default class Result extends Component {
     reader.onload = () => {
       const text = reader.result
       const results = JSON.parse(text)
-      const scores = calculateScore({answers: results.answers})
+      const scores = calculateScore({ answers: results.answers })
       const info = getInfo()
       let language = this.state.language
       if (info.languages.includes(results.language)) {
         language = results.language
       }
-      const resume = getResult({scores: scores, lang: language})
+      const resume = getResult({ scores: scores, lang: language })
       this.setState({
         scores: scores,
         resume: resume,
@@ -120,7 +120,7 @@ export default class Result extends Component {
   saveResults (e) {
     e.preventDefault()
     const results = this.state.results
-    const file = new window.File([JSON.stringify(results, null, 2)], 'b5-results.json', {type: 'text/json;charset=utf-8'})
+    const file = new window.File([JSON.stringify(results, null, 2)], 'b5-results.json', { type: 'text/json;charset=utf-8' })
     FileSaver.saveAs(file)
   }
 
@@ -128,7 +128,7 @@ export default class Result extends Component {
     e.preventDefault()
     const language = e.target.dataset.language
     const scores = this.state.scores
-    const resume = getResult({scores: scores, lang: language})
+    const resume = getResult({ scores: scores, lang: language })
     this.setState({
       resume: resume,
       viewLanguage: language
