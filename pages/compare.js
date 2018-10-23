@@ -5,7 +5,7 @@ import Comparisons from '../components/Comparisons'
 import LoadFile from '../components/LoadFile'
 import repackResults from '../components/repack-results'
 const { unpack } = require('jcb64')
-const { getInfo } = require('b5-result-text')
+const { getInfo } = require('@alheimsins/b5-result-text')
 const qs = require('querystring')
 const { parse } = require('url')
 const FileSaver = require('file-saver')
