@@ -45,7 +45,7 @@
     "@alheimsins/b5-result-text": "1.7.0",
     "@alheimsins/bigfive-calculate-score": "1.0.1",
     "file-saver": "2.0.0",
-    "jcb64": "1.1.4",
+    "jcb64": "1.1.5",
     "next": "7.0.2",
     "react": "16.6.3",
     "react-dom": "16.6.3",
