@@ -13,14 +13,6 @@ See it live: [b5.allthethings.win](https://b5.allthethings.win/)
 
 ## Deploy your own to ZEIT/Now
 
-### Directly from the repo
-
-```
-$ now https://github.com/zrrrzzt/b5-web
-```
-
-### As a static site
-
 Clone the repo.
 
 Install dependencies.

@@ -9,10 +9,10 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
       <li>Your spontaneous answer is usually the most accurate.</li>
     </ul>
     <p><strong>Select test language</strong></p>
-    <div className={'button-wrapper'}>
+    <div>
       {info.languages.map((lang, index) => <button data-language={lang} className={selectedLanguage === lang ? 'isActive' : ''} onClick={setLanguage} key={index}>{lang}</button>)}
     </div>
-    <div className={'button-wrapper'}>
+    <div>
       <button onClick={startTest}>Start test</button>
     </div>
     <style jsx>
@@ -52,12 +52,6 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
           padding: 10px;
           display: flex;
           flex-direction: column;
-        }
-        .button-wrapper {
-          display: flex;
-          justify-content: space-evenly;
-          width: 600px;
-          align-self: center;
         }
         @media screen and (max-width: 700px) {
           button {
