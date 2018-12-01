@@ -13,31 +13,34 @@ See it live: [b5.allthethings.win](https://b5.allthethings.win/)
 
 ## Deploy your own to ZEIT/Now
 
-Clone the repo.
+You will need to have [Now](https://zeit.co/now) installed as well as [Node.js](https://nodejs.org).
 
-Install dependencies.
+- Clone the repo.
+- Configure [now.json](now.json) with your own alias
+- Run the deploy script 
 
 ```
-$ npm install
+$ npm run deploy
 ```
 
-Export the site to a static version
+## Deploy your own to another host
+
+- Clone the repo
+- Install dependencies
+- Run the export script
 
 ```
 $ npm run export
 ```
 
-Deploy the export to Now
+Deploy the `dist` folder to your favorite host
 
-```
-$ now --static out --name b5-web
-```
 
 ## Related
 - [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) The npm module with questions
 - [b5-calculate-score](https://github.com/zrrrzzt/b5-calculate-score) Module for calculating score
 - [b5-result-text](https://github.com/zrrrzzt/b5-result-text) Create a text resume based on the score
-- [bigfive-web](https://github.com/maccyber/bigfive-web) Different approach to testsite based on microservices
+- [bigfive-web](https://github.com/Alheimsins/bigfive-web) Different approach to testsite based on microservices
 
 ## License
 
@@ -46,6 +49,3 @@ $ now --static out --name b5-web
 ## About
 
 Created with <3 by [zrrzzt](https://github.com/zrrrzzt) and [maccyber](https://github.com/maccyber)
-
-![Robohash image of zrrrzzt](https://robots.kebabstudios.party/zrrrzzt.png "Robohash image of zrrrzzt") 
-![Robohash image of maccyber](https://robots.kebabstudios.party/maccyber.png "Robohash image of maccyber")

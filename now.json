@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "b5-web",
+  "alias": [
+    "b5.allthethings.win"
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ]
+}

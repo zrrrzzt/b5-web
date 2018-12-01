@@ -12,10 +12,11 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "clear": "rm -rf .next && rm -rf out",
-    "export": "next build && next export",
+    "clear": "rm -rf .next && rm -rf dist",
+    "export": "next build && next export -o dist",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "deploy": "now --static out --name b5-web"
+    "now-build": "next build && next export -o dist",
+    "deploy": "now && now alias"
   },
   "standard": {
     "parser": "babel-eslint",
@@ -45,11 +46,6 @@
   "engines": {
     "node": ">= 10.0.0"
   },
-  "now": {
-    "engines": {
-      "node": "10.0.0"
-    }
-  },
   "dependencies": {
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.0.4",
     "@alheimsins/b5-result-text": "1.7.0",
@@ -63,6 +59,7 @@
   },
   "devDependencies": {
     "ava": "0.25.0",
+    "babel-eslint": "10.0.1",
     "coveralls": "3.0.2",
     "nyc": "13.1.0",
     "standard": "12.0.1"
