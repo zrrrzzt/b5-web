@@ -52,7 +52,7 @@
     "@alheimsins/bigfive-calculate-score": "1.0.2",
     "file-saver": "2.0.1",
     "jcb64": "1.1.6",
-    "next": "8.0.1",
+    "next": "8.0.3",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-easy-chart": "1.0.0"
