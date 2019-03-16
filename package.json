@@ -53,8 +53,8 @@
     "file-saver": "2.0.1",
     "jcb64": "1.1.7",
     "next": "8.0.3",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
     "react-easy-chart": "1.0.0"
   },
   "devDependencies": {
