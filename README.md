@@ -3,7 +3,7 @@
 
 # b5-web
 
-Website for big five personality test.
+Webapp for big five personality test.
 
 Let's you answer 120 questions from the [Johnson 120 IPIP-NEO-PI-R](http://ipip.ori.org/30FacetNEO-PI-RItems.htm) items.
 
