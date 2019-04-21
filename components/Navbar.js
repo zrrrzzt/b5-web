@@ -14,12 +14,12 @@ export default ({ username = false }) => (
     </ul>
     <ul className={'right'}>
       <li>
-        <Link prefetch href='/result'>
+        <Link href='/result'>
           <a>Result</a>
         </Link>
       </li>
       <li>
-        <Link prefetch href='/compare'>
+        <Link href='/compare'>
           <a>Compare</a>
         </Link>
       </li>
