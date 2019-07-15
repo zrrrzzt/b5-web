@@ -3,7 +3,7 @@ import { BarChart } from 'react-easy-chart'
 const margin = { top: 20, right: 40, bottom: 40, left: 40 }
 
 function prepareData (data) {
-  const output = data.map(item => Object.assign({ 'x': item.title, 'y': item.score }))
+  const output = data.map(item => Object.assign({ x: item.title, y: item.score }))
   return output
 }
 

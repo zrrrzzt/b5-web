@@ -6,8 +6,6 @@ import LoadFile from '../components/LoadFile'
 import repackResults from '../components/repack-results'
 const { unpack } = require('jcb64')
 const { getInfo } = require('@alheimsins/b5-result-text')
-const qs = require('querystring')
-const { parse } = require('url')
 const FileSaver = require('file-saver')
 
 export default class Compare extends Component {
@@ -39,9 +37,9 @@ export default class Compare extends Component {
     const nameField = document.getElementById('comparisonName')
     const compressedDataField = document.getElementById('comparisonData')
     if (compressedDataField.value.startsWith('http')) {
-      const url = parse(compressedDataField.value)
-      const query = qs.parse(url.search.replace('?', ''))
-      id = query.id
+      const url = new URL(compressedDataField.value)
+      const params = new URLSearchParams(url.search.replace('?', ''))
+      id = params.get('id')
     } else {
       id = compressedDataField.value
     }

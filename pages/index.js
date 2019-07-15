@@ -35,9 +35,9 @@ export default class Index extends Component {
 
   setAnswer (e) {
     e.preventDefault()
-    let answers = this.state.answers
+    const answers = this.state.answers
     let nowShowing = this.state.nowShowing
-    let nextShowing = parseInt(e.target.dataset.num, 10)
+    const nextShowing = parseInt(e.target.dataset.num, 10)
     if (nextShowing > nowShowing) {
       nowShowing = nextShowing
     }
@@ -55,7 +55,7 @@ export default class Index extends Component {
   doSubmit (e) {
     const answers = this.state.answers
     const language = this.state.language
-    let choices = Object.keys(answers).reduce((prev, current) => {
+    const choices = Object.keys(answers).reduce((prev, current) => {
       const choice = answers[current]
       prev.push({
         domain: choice.domain,

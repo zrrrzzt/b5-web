@@ -3,12 +3,10 @@ import Page from '../components/Page'
 import Resume from '../components/Resume'
 import AddResults from '../components/AddResults'
 import LoadFile from '../components/LoadFile'
-const { parse } = require('url')
 const { unpack } = require('jcb64')
 const calculateScore = require('@alheimsins/bigfive-calculate-score')
 const getResult = require('@alheimsins/b5-result-text')
 const { getInfo } = require('@alheimsins/b5-result-text')
-const qs = require('querystring')
 const FileSaver = require('file-saver')
 
 export default class Result extends Component {
@@ -31,9 +29,10 @@ export default class Result extends Component {
   }
 
   async componentDidMount () {
-    const query = qs.parse(window.location.search.replace('?', ''))
-    if (query.id) {
-      const b64 = query.id
+    const params = new URLSearchParams(window.location.search.replace('?', ''))
+    const queryId = params.get('id')
+    if (queryId) {
+      const b64 = queryId
       const results = unpack(b64)
       const scores = calculateScore({ answers: results.answers })
       const info = getInfo()
@@ -65,9 +64,9 @@ export default class Result extends Component {
     let b64 = false
     const compressedDataField = document.getElementById('resultData')
     if (compressedDataField.value.startsWith('http')) {
-      const url = parse(compressedDataField.value)
-      const query = qs.parse(url.search.replace('?', ''))
-      b64 = query.id
+      const url = new URL(compressedDataField.value)
+      const params = new URLSearchParams(url.search.replace('?', ''))
+      b64 = params.get('id')
     } else {
       b64 = compressedDataField.value
     }
