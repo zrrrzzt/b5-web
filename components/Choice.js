@@ -8,7 +8,9 @@ export default ({ choice, item, answers, setAnswer }) => (
       data-facet={item.facet}
       data-score={choice.score}
       onClick={setAnswer}
-      className={Object.keys(answers).includes(item.id) && answers[item.id].score === choice.score.toString() ? 'isActive' : ''}>{choice.text}</button>
+      className={Object.keys(answers).includes(item.id) && answers[item.id].score === choice.score.toString() ? 'isActive' : ''}
+    >{choice.text}
+    </button>
     <style jsx>
       {`
         button {

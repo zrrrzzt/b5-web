@@ -6,7 +6,7 @@ export default ({ username, children }) => (
   <Layout>
     <Navbar />
     <Main>
-      { children }
+      {children}
     </Main>
   </Layout>
 )

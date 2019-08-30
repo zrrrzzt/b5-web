@@ -2,17 +2,17 @@ import Link from 'next/link'
 
 export default ({ username = false }) => (
   <nav>
-    <ul className={'left'}>
+    <ul className='left'>
       <li>
         <Link prefetch href='/'>
           <a>
-            <img style={{ width: '32px' }} src={'/static/favicon-32x32.png'} />
+            <img style={{ width: '32px' }} src='/static/favicon-32x32.png' />
           </a>
         </Link>
       </li>
       <li><span className='app-name'>Big Five Test</span></li>
     </ul>
-    <ul className={'right'}>
+    <ul className='right'>
       <li>
         <Link href='/result'>
           <a>Result</a>

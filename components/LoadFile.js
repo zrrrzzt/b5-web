@@ -1,5 +1,3 @@
-import { Fragment } from 'react'
-
 function triggerUpload (e) {
   e.preventDefault()
   const fileField = e.target.previousSibling
@@ -7,7 +5,7 @@ function triggerUpload (e) {
 }
 
 export default ({ handler, buttonTitle }) => (
-  <Fragment>
+  <>
     <input type='file' accept='.json' onChange={handler} />
     <button onClick={triggerUpload}>{buttonTitle}</button>
     <style jsx>
@@ -40,5 +38,5 @@ export default ({ handler, buttonTitle }) => (
         }
       `}
     </style>
-  </Fragment>
+  </>
 )

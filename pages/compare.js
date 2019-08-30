@@ -19,10 +19,10 @@ export default class Compare extends Component {
     }
     this.addComparison = this.addComparison.bind(this)
     this.getWidth = this.getWidth.bind(this)
-    this.translate = this.translate.bind(this)
+    this.handleTranslate = this.handleTranslate.bind(this)
     this.loadComparison = this.loadComparison.bind(this)
     this.loadResult = this.loadResult.bind(this)
-    this.saveComparison = this.saveComparison.bind(this)
+    this.handleSaveComparison = this.handleSaveComparison.bind(this)
     this.updateScores = this.updateScores.bind(this)
   }
 
@@ -78,7 +78,7 @@ export default class Compare extends Component {
     }
   }
 
-  saveComparison (e) {
+  handleSaveComparison (e) {
     e.preventDefault()
     const comparisons = this.state.comparisons
     const file = new window.File([JSON.stringify(comparisons, null, 2)], 'b5-comparison.json', { type: 'text/json;charset=utf-8' })
@@ -104,7 +104,7 @@ export default class Compare extends Component {
     }
   }
 
-  translate (e) {
+  handleTranslate (e) {
     e.preventDefault()
     const language = e.target.dataset.language
     const comparisons = this.state.comparisons
@@ -123,13 +123,13 @@ export default class Compare extends Component {
   render () {
     return (
       <Page>
-        <h1 className={'no-print'}>Big five comparison</h1>
-        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang}</button>)}
+        <h1 className='no-print'>Big five comparison</h1>
+        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.handleTranslate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang}</button>)}
         <AddComparison addComparison={this.addComparison} />
-        <LoadFile handler={this.loadResult} buttonTitle={'Load result'} />
+        <LoadFile handler={this.loadResult} buttonTitle='Load result' />
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
-        {this.state.comparisons.length > 0 ? <button onClick={this.saveComparison}>Save comparison</button> : null}
-        {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle={'Load comparison'} /> : null}
+        {this.state.comparisons.length > 0 ? <button onClick={this.handleSaveComparison}>Save comparison</button> : null}
+        {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle='Load comparison' /> : null}
         <style jsx>
           {`
             button {

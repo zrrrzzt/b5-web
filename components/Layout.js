@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { name } from '../package.json'
 
 export default ({ children }) => (
-  <div className={'container'}>
+  <div className='container'>
     <Head>
       <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8 user-scalable=no, width=device-width' />
       <link rel='icon' type='image/png' href='static/favicon-96x96.png' sizes='96x96' />
@@ -10,10 +10,10 @@ export default ({ children }) => (
       <link rel='icon' type='image/png' href='static/favicon-16x16.png' sizes='16x16' />
       <link rel='icon' type='image/png' href='static/favicon-128.png' sizes='128x128' />
       <title>
-        { name }
+        {name}
       </title>
     </Head>
-    { children }
+    {children}
     <style jsx global>
       {` 
         body {

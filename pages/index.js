@@ -17,7 +17,7 @@ export default class Index extends Component {
     this.setLanguage = this.setLanguage.bind(this)
     this.startTest = this.startTest.bind(this)
     this.setAnswer = this.setAnswer.bind(this)
-    this.doSubmit = this.doSubmit.bind(this)
+    this.handleDoSubmit = this.handleDoSubmit.bind(this)
   }
 
   startTest () {
@@ -52,7 +52,7 @@ export default class Index extends Component {
     })
   }
 
-  doSubmit (e) {
+  handleDoSubmit (e) {
     const answers = this.state.answers
     const language = this.state.language
     const choices = Object.keys(answers).reduce((prev, current) => {
@@ -80,7 +80,7 @@ export default class Index extends Component {
           ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
           : null}
         {this.state.items !== false && this.state.nowShowing === this.state.items.length
-          ? <button onClick={this.doSubmit}>Submit</button>
+          ? <button onClick={this.handleDoSubmit}>Submit</button>
           : null}
         {this.state.items !== false
           ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)

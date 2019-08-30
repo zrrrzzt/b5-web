@@ -1,6 +1,6 @@
 export default ({ children }) => (
   <div className='main'>
-    { children }
+    {children}
     <style jsx>
       {`
         .main {

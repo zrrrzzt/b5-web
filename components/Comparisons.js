@@ -24,7 +24,7 @@ const Facets = ({ facets, chartWidth }) => {
 }
 
 export default ({ data, chartWidth }) => (
-  <div className={'domain-wrapper'}>
+  <div className='domain-wrapper'>
     {data.map((domain, index) => <DomainScores data={domain} chartWidth={chartWidth} key={index} />)}
     <style jsx>
       {`

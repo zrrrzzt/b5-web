@@ -24,8 +24,8 @@ export default class Result extends Component {
     this.addResults = this.addResults.bind(this)
     this.getWidth = this.getWidth.bind(this)
     this.loadResults = this.loadResults.bind(this)
-    this.saveResults = this.saveResults.bind(this)
-    this.translateResume = this.translateResume.bind(this)
+    this.handleSaveResults = this.handleSaveResults.bind(this)
+    this.handleTranslateResume = this.handleTranslateResume.bind(this)
   }
 
   async componentDidMount () {
@@ -116,14 +116,14 @@ export default class Result extends Component {
     }
   }
 
-  saveResults (e) {
+  handleSaveResults (e) {
     e.preventDefault()
     const results = this.state.results
     const file = new window.File([JSON.stringify(results, null, 2)], 'b5-results.json', { type: 'text/json;charset=utf-8' })
     FileSaver.saveAs(file)
   }
 
-  translateResume (e) {
+  handleTranslateResume (e) {
     e.preventDefault()
     const language = e.target.dataset.language
     const scores = this.state.scores
@@ -138,13 +138,13 @@ export default class Result extends Component {
     return (
       <Page>
         <h1>Big Five Result</h1>
-        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.translateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
+        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.handleTranslateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
         {this.state.resume === false ? <AddResults addResults={this.addResults} /> : null}
-        {this.state.resume === false ? <LoadFile handler={this.loadResults} buttonTitle={'Upload'} /> : null}
+        {this.state.resume === false ? <LoadFile handler={this.loadResults} buttonTitle='Upload' /> : null}
         {this.state.resume !== false
           ? <Resume data={this.state.resume} width={this.state.chartWidth} />
           : null}
-        {this.state.resume !== false ? <button onClick={this.saveResults}>Save results</button> : null}
+        {this.state.resume !== false ? <button onClick={this.handleSaveResults}>Save results</button> : null}
         <style jsx>
           {`
             h2 {

@@ -1,7 +1,7 @@
 export default ({ selectedLanguage, info, setLanguage, startTest }) => (
-  <div className={'intro-wrapper'}>
+  <div className='intro-wrapper'>
     <p>This is a test for the five factor model of personality based on work from <a href='https://github.com/kholia/IPIP-NEO-PI' target='blank'>IPIP-NEO-PI</a>.</p>
-    <p>Tests and evaluation is gathered from <a href='http://ipip.ori.org/' target='_blank'>ipip.ori.org</a>.</p>
+    <p>Tests and evaluation is gathered from <a href='http://ipip.ori.org/' target='_blank' rel='noopener noreferrer'>ipip.ori.org</a>.</p>
     <p>Inventories are from Johnson's (2014) 120-item IPIP NEO-PI-R</p>
     <ul>
       <li>Answer honestly, even if you don't like the answer.</li>

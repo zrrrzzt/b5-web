@@ -1,7 +1,7 @@
 import Choice from './Choice'
 
 export default ({ data, answers, setAnswer }) => (
-  <div className={'choice-wrapper'}>
+  <div className='choice-wrapper'>
     {data && data.choices
       ? data.choices.map(choice => <Choice choice={choice} item={data} answers={answers} setAnswer={setAnswer} key={choice.score} />)
       : null}
