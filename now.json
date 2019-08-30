@@ -27,7 +27,6 @@
       "Strict-Transport-Security": "max-age=63072000;",
       "X-Frame-Options": "DENY",
       "X-Content-Type-Options": "nosniff"
-    }},
-    {"src": "(.*)", "dest": "/$1"}
+    }}
   ]
 }
