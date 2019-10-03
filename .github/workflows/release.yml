@@ -1,0 +1,26 @@
+on:
+  release:
+    types: [published]
+    branches:
+      - master
+name: Test and Deploy on release
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build
+      uses: actions/npm@master
+      with:
+        args: install
+    - name: Test
+      uses: actions/npm@master
+      with:
+        args: test
+    - name: Deploy to ZEIT
+      uses: actions/zeit-now@1.0.0
+      env:
+        ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+      with:
+        args: --prod
