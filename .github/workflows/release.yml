@@ -19,8 +19,6 @@ jobs:
       with:
         args: test
     - name: Deploy to ZEIT
-      uses: actions/zeit-now@1.0.0
       env:
         ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
-      with:
-        args: --prod
+      run: now --prod --token ${ZEIT_TOKEN}
