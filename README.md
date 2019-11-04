@@ -27,6 +27,7 @@ $ npm run deploy
 
 - Clone the repo
 - Install dependencies
+- Change `target` in [next.config.js](next.config.js) to 'server'
 - Run the export script
 
 ```
