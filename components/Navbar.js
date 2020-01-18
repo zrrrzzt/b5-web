@@ -4,7 +4,7 @@ export default ({ username = false }) => (
   <nav>
     <ul className='left'>
       <li>
-        <Link prefetch href='/'>
+        <Link href='/'>
           <a>
             <img style={{ width: '32px' }} src='/static/favicon-32x32.png' />
           </a>
