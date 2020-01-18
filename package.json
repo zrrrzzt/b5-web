@@ -16,7 +16,7 @@
     "export": "next build && next export -o dist",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "now-build": "next build",
-    "deploy": "now --target production"
+    "deploy": "now --prod"
   },
   "standard": {
     "parser": "babel-eslint",
