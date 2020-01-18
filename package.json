@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/zrrrzzt/b5-web#readme",
   "engines": {
-    "node": ">= 10.17.0"
+    "node": ">= 12.14.1"
   },
   "dependencies": {
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "2.1.9",
