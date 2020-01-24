@@ -22,7 +22,7 @@
         "Service-Worker-Allowed": "/"
       }
     },
-    {"src": "/", "dest": "/index.html", "headers": {
+    {"src": "/", "dest": "/", "headers": {
       "Content-Security-Policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; img-src 'self' data:; frame-ancestors 'none'",
       "Strict-Transport-Security": "max-age=63072000;",
       "X-Frame-Options": "DENY",
