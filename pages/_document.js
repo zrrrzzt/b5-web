@@ -29,7 +29,6 @@ class MyDocument extends Document {
           <meta name='theme-color' content='#000000' />
           <meta name='viewport' content='width=device-width, initial-scale=1.0' />
           <meta name='description' content='Webapp for big five personality test' />
-          <title>Big five webapp</title>
         </Head>
         <body>
           <Main />

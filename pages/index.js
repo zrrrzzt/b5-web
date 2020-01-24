@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import Head from 'next/head'
 import Page from '../components/Page'
 import Item from '../components/Item'
 import Intro from '../components/Intro'
@@ -74,50 +75,55 @@ export default class Index extends Component {
 
   render () {
     return (
-      <Page>
-        <h1>Big Five Test</h1>
-        {this.state.intro === false
-          ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
-          : null}
-        {this.state.items !== false && this.state.nowShowing === this.state.items.length
-          ? <button onClick={this.handleDoSubmit}>Submit</button>
-          : null}
-        {this.state.items !== false
-          ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
-          : null}
-        <style jsx>
-          {`
-            h2 {
-              color: red;
-              font-size: 48px;
-              text-align: center;
-            }
-            a, a:visited {
-              color: white;
-            }
-            button {
-              background-color: white;
-              border-radius: 2px;
-              color: black;
-              padding: 15px 32px;
-              text-align: center;
-              text-decoration: none;
-              display: inline-block;
-              font-size: 16px;
-              width: 200px;
-              margin: 10px;
-              cursor: pointer;
-            }
-            button:focus {
-              outline:0;
-            }
-            
-            button:active {
-              outline: 0;
-            }
-          `}
-        </style>
-      </Page>
+      <>
+        <Head>
+          <title>Big five webapp</title>
+        </Head>
+        <Page>
+          <h1>Big Five Test</h1>
+          {this.state.intro === false
+            ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
+            : null}
+          {this.state.items !== false && this.state.nowShowing === this.state.items.length
+            ? <button onClick={this.handleDoSubmit}>Submit</button>
+            : null}
+          {this.state.items !== false
+            ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
+            : null}
+          <style jsx>
+            {`
+              h2 {
+                color: red;
+                font-size: 48px;
+                text-align: center;
+              }
+              a, a:visited {
+                color: white;
+              }
+              button {
+                background-color: white;
+                border-radius: 2px;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                width: 200px;
+                margin: 10px;
+                cursor: pointer;
+              }
+              button:focus {
+                outline:0;
+              }
+              
+              button:active {
+                outline: 0;
+              }
+            `}
+          </style>
+        </Page>
+      </>
     )
   }
 }
