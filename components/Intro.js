@@ -10,7 +10,7 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => (
     </ul>
     <p><strong>Select test language</strong></p>
     <div>
-      {info.languages.map((lang, index) => <button data-language={lang} className={selectedLanguage === lang ? 'isActive' : ''} onClick={setLanguage} key={index}>{lang}</button>)}
+      {info.languages.map((lang, index) => <button data-language={lang} className={selectedLanguage === lang ? 'isActive' : ''} onClick={() => setLanguage(lang)} key={index}>{lang}</button>)}
     </div>
     <div>
       <button onClick={startTest}>Start test</button>

@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useState } from 'react'
 import Head from 'next/head'
 import Page from '../components/Page'
 import Item from '../components/Item'
@@ -6,56 +6,38 @@ import Intro from '../components/Intro'
 const { getItems, getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
 const { pack } = require('jcb64')
 
-export default class Index extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      answers: {},
-      items: false,
-      intro: false,
-      language: 'en'
-    }
-    this.setLanguage = this.setLanguage.bind(this)
-    this.startTest = this.startTest.bind(this)
-    this.setAnswer = this.setAnswer.bind(this)
-    this.handleDoSubmit = this.handleDoSubmit.bind(this)
-  }
+const Index = props => {
+  const [answers, setAnswers] = useState({})
+  const [items, setItems] = useState(false)
+  const [intro, setIntro] = useState(false)
+  const [nowShowing, setNowShowing] = useState(false)
+  const [language, setLanguage] = useState('en')
 
-  startTest () {
-    const language = this.state.language
+  const startTest = () => {
     const items = getItems(language, true)
     items.reverse()
-    this.setState({ items: items, nowShowing: 0, intro: true })
+    setItems(items)
+    setNowShowing(0)
+    setIntro(true)
   }
 
-  setLanguage (e) {
-    e.preventDefault()
-    const language = e.target.dataset.language
-    this.setState({ language: language })
-  }
-
-  setAnswer (e) {
-    e.preventDefault()
-    const answers = this.state.answers
-    let nowShowing = this.state.nowShowing
-    const nextShowing = parseInt(e.target.dataset.num, 10)
+  const setAnswer = event => {
+    event.preventDefault()
+    const thisAnswers = answers
+    const nextShowing = parseInt(event.target.dataset.num, 10)
     if (nextShowing > nowShowing) {
-      nowShowing = nextShowing
+      setNowShowing(nextShowing)
     }
-    answers[e.target.dataset.qid] = {
-      domain: e.target.dataset.domain,
-      facet: e.target.dataset.facet,
-      score: e.target.dataset.score
+
+    thisAnswers[event.target.dataset.qid] = {
+      domain: event.target.dataset.domain,
+      facet: event.target.dataset.facet,
+      score: event.target.dataset.score
     }
-    this.setState({
-      answers: answers,
-      nowShowing: nowShowing
-    })
+    setAnswers(thisAnswers)
   }
 
-  handleDoSubmit (e) {
-    const answers = this.state.answers
-    const language = this.state.language
+  const handleSubmit = event => {
     const choices = Object.keys(answers).reduce((prev, current) => {
       const choice = answers[current]
       prev.push({
@@ -73,57 +55,57 @@ export default class Index extends Component {
     window.location = `/result?id=${b64}`
   }
 
-  render () {
-    return (
-      <>
-        <Head>
-          <title>Big five webapp</title>
-        </Head>
-        <Page>
-          <h1>Big Five Test</h1>
-          {this.state.intro === false
-            ? <Intro selectedLanguage={this.state.language} info={getInfo()} setLanguage={this.setLanguage} startTest={this.startTest} />
-            : null}
-          {this.state.items !== false && this.state.nowShowing === this.state.items.length
-            ? <button onClick={this.handleDoSubmit}>Submit</button>
-            : null}
-          {this.state.items !== false
-            ? this.state.items.map(item => parseInt(item.num, 10) <= this.state.nowShowing + 1 ? <Item data={item} answers={this.state.answers} setAnswer={this.setAnswer} key={item.id} /> : null)
-            : null}
-          <style jsx>
-            {`
-              h2 {
-                color: red;
-                font-size: 48px;
-                text-align: center;
-              }
-              a, a:visited {
-                color: white;
-              }
-              button {
-                background-color: white;
-                border-radius: 2px;
-                color: black;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                width: 200px;
-                margin: 10px;
-                cursor: pointer;
-              }
-              button:focus {
-                outline:0;
-              }
-              
-              button:active {
-                outline: 0;
-              }
-            `}
-          </style>
-        </Page>
-      </>
-    )
-  }
+  return (
+    <>
+      <Head>
+        <title>Big five webapp</title>
+      </Head>
+      <Page>
+        <h1>Big Five Test</h1>
+        {intro === false
+          ? <Intro selectedLanguage={language} info={getInfo()} setLanguage={setLanguage} startTest={startTest} />
+          : null}
+        {items !== false && nowShowing === items.length
+          ? <button onClick={handleSubmit}>Submit</button>
+          : null}
+        {items !== false
+          ? items.map(item => parseInt(item.num, 10) <= nowShowing + 1 ? <Item data={item} answers={answers} setAnswer={setAnswer} key={item.id} /> : null)
+          : null}
+        <style jsx>
+          {`
+            h2 {
+              color: red;
+              font-size: 48px;
+              text-align: center;
+            }
+            a, a:visited {
+              color: white;
+            }
+            button {
+              background-color: white;
+              border-radius: 2px;
+              color: black;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              width: 200px;
+              margin: 10px;
+              cursor: pointer;
+            }
+            button:focus {
+              outline:0;
+            }
+            
+            button:active {
+              outline: 0;
+            }
+          `}
+        </style>
+      </Page>
+    </>
+  )
 }
+
+export default Index
