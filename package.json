@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "3.1.10",
-    "@alheimsins/b5-result-text": "1.7.4",
+    "@alheimsins/b5-result-text": "1.7.5",
     "@alheimsins/bigfive-calculate-score": "1.0.3",
     "file-saver": "2.0.2",
     "jcb64": "2.0.2",
