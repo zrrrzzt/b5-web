@@ -50,13 +50,17 @@
     "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "4.0.0",
     "@alheimsins/b5-result-text": "1.7.5",
     "@alheimsins/bigfive-calculate-score": "1.0.3",
+    "@fullhuman/postcss-purgecss": "2.0.5",
+    "autoprefixer": "9.7.4",
     "file-saver": "2.0.2",
     "jcb64": "2.0.2",
     "next": "9.2.1",
     "next-offline": "4.0.6",
+    "postcss-import": "12.0.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "react-easy-chart": "1.0.0"
+    "react-easy-chart": "1.0.0",
+    "tailwindcss": "1.1.4"
   },
   "devDependencies": {
     "ava": "3.0.0",
