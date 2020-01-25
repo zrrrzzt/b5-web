@@ -16,7 +16,6 @@
     "clear": "rm -rf .next && rm -rf dist",
     "export": "next build && next export -o dist",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "now-build": "next build",
     "deploy": "now --prod"
   },
   "standard": {
