@@ -1,4 +1,23 @@
-export default ({ selectedLanguage, languages, setLanguage, startTest }) => {
+import { useState } from 'react'
+
+const SelectLanguage = props => {
+  const { selectedLanguage, languages, setLanguage } = props
+  const [selectedOption, setSelectedOption] = useState(selectedLanguage)
+  const handleLanguageSelect = event => {
+    const lang = event.target.value
+    setSelectedOption(lang)
+    setLanguage(lang)
+  }
+  return (
+    <select onChange={handleLanguageSelect} value={selectedOption}>
+      {languages.map((lang, index) => <option value={lang.id} key={index}>{lang.text}</option>)}
+    </select>
+  )
+}
+
+const Intro = props => {
+  const { selectedLanguage, languages, setLanguage, startTest } = props
+
   return (
     <div className='container mx-auto p-4'>
       <p>This is a test for the five factor model of personality based on work from <a href='https://github.com/kholia/IPIP-NEO-PI' target='blank'>IPIP-NEO-PI</a>.</p>
@@ -10,12 +29,12 @@ export default ({ selectedLanguage, languages, setLanguage, startTest }) => {
         <li>Your spontaneous answer is usually the most accurate.</li>
       </ul>
       <p className='font-bold'>Select test language</p>
-      <div className='flex flex-wrap justify-around'>
-        {languages.map((lang, index) => <button className={lang.id === selectedLanguage ? 'bg-yellow-300 border border-black m-2 p-4 text-center flex-grow' : 'border border-black m-2 p-4 hover:bg-yellow-300 text-center flex-grow'} onClick={() => setLanguage(lang.id)} key={index}>{lang.text}</button>)}
-      </div>
+      <SelectLanguage selectedLanguage={selectedLanguage} languages={languages} setLanguage={setLanguage} />
       <div>
         <button onClick={startTest}>Start test</button>
       </div>
     </div>
   )
 }
+
+export default Intro
