@@ -63,7 +63,7 @@ const Index = props => {
       </Head>
       <Page>
         <div>
-          <h1>Big Five Test</h1>
+          <h1 className='text-4xl font-semibold text-center'>Big Five Test</h1>
           <div>
             {intro === false
               ? <Intro selectedLanguage={language} languages={languages} setLanguage={setLanguage} startTest={startTest} />
