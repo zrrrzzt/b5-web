@@ -5,6 +5,7 @@ import Item from '../components/Item'
 import Intro from '../components/Intro'
 const { getItems, getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
 const { pack } = require('jcb64')
+const { languages } = getInfo()
 
 const Index = props => {
   const [answers, setAnswers] = useState({})
@@ -65,7 +66,7 @@ const Index = props => {
           <h1>Big Five Test</h1>
           <div>
             {intro === false
-              ? <Intro selectedLanguage={language} info={getInfo()} setLanguage={setLanguage} startTest={startTest} />
+              ? <Intro selectedLanguage={language} languages={languages} setLanguage={setLanguage} startTest={startTest} />
               : null}
             {items !== false && nowShowing === items.length
               ? <button onClick={handleSubmit}>Submit</button>
