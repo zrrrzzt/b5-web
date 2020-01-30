@@ -130,37 +130,6 @@ export default class Compare extends Component {
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
         {this.state.comparisons.length > 0 ? <button onClick={this.handleSaveComparison}>Save comparison</button> : null}
         {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle='Load comparison' /> : null}
-        <style jsx>
-          {`
-            button {
-              background-color: white;
-              border-radius: 2px;
-              color: black;
-              padding: 15px 32px;
-              text-align: center;
-              text-decoration: none;
-              display: inline-block;
-              font-size: 16px;
-              width: 200px;
-              margin: 10px;
-              cursor: pointer;
-            }
-            button:focus {
-              outline:0;
-            }
-            button:active {
-              outline: 0;
-            }
-            .isActive {
-              background: yellow;
-            }
-            @media print {    
-              .no-print, .no-print * {
-                display: none !important;
-              }
-            }
-          `}
-        </style>
       </Page>
     )
   }

@@ -145,40 +145,6 @@ export default class Result extends Component {
           ? <Resume data={this.state.resume} width={this.state.chartWidth} />
           : null}
         {this.state.resume !== false ? <button onClick={this.handleSaveResults}>Save results</button> : null}
-        <style jsx>
-          {`
-            h2 {
-              color: red;
-              font-size: 48px;
-              text-align: center;
-            }
-            a, a:visited {
-              color: white;
-            }
-            button {
-              background-color: white;
-              border-radius: 2px;
-              color: black;
-              padding: 15px 32px;
-              text-align: center;
-              text-decoration: none;
-              display: inline-block;
-              font-size: 16px;
-              width: 200px;
-              margin: 10px;
-              cursor: pointer;
-            }
-            button:focus {
-              outline:0;
-            }
-            button:active {
-              outline: 0;
-            }
-            .isActive {
-              background: yellow;
-            }
-          `}
-        </style>
       </Page>
     )
   }
