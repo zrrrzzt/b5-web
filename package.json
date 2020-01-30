@@ -1,11 +1,10 @@
 {
   "name": "b5-web",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Static site for big five personality tests",
   "main": "index.js",
   "scripts": {
-    "test": "standard && ava",
-    "test-audit": "standard && npm audit && ava",
+    "test": "standard && npm audit && ava",
     "test-offline": "standard && ava",
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
@@ -47,7 +46,7 @@
     "node": ">= 12.14.1"
   },
   "dependencies": {
-    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "4.0.0",
+    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "4.0.1",
     "@alheimsins/b5-result-text": "1.7.5",
     "@alheimsins/bigfive-calculate-score": "1.0.3",
     "@fullhuman/postcss-purgecss": "2.0.5",
@@ -55,15 +54,14 @@
     "file-saver": "2.0.2",
     "jcb64": "2.0.2",
     "next": "9.2.1",
-    "next-offline": "4.0.6",
-    "postcss-import": "12.0.1",
+    "next-offline": "5.0.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-easy-chart": "1.0.0",
     "tailwindcss": "1.1.4"
   },
   "devDependencies": {
-    "ava": "3.0.0",
+    "ava": "3.1.0",
     "babel-eslint": "10.0.3",
     "coveralls": "3.0.9",
     "nyc": "15.0.0",
