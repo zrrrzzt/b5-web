@@ -16,7 +16,7 @@ const Intro = props => {
       <p className='font-bold'>Select test language</p>
       <SelectLanguage selectedLanguage={selectedLanguage} languages={languages} setLanguage={setLanguage} />
       <div>
-        <button className='border border-black mt-4 p-4 text-2xl bg-blue-100 hover:bg-yellow-300 shadow w-full' onClick={startTest}>Start test</button>
+        <button className='border border-black mt-4 p-4 text-2xl bg-teal-200 hover:bg-yellow-300 shadow w-full' onClick={startTest}>Start test</button>
       </div>
     </div>
   )
