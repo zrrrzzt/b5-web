@@ -3,10 +3,12 @@ import Page from '../components/Page'
 import AddComparison from '../components/AddComparison'
 import Comparisons from '../components/Comparisons'
 import LoadFile from '../components/LoadFile'
+import SelectLanguage from '../components/SelectLaguage'
 import repackResults from '../components/repack-results'
 const { unpack } = require('jcb64')
-const { getInfo } = require('@alheimsins/b5-result-text')
 const FileSaver = require('file-saver')
+const { getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
+const { languages } = getInfo()
 
 export default class Compare extends Component {
   constructor (props) {
@@ -19,7 +21,7 @@ export default class Compare extends Component {
     }
     this.addComparison = this.addComparison.bind(this)
     this.getWidth = this.getWidth.bind(this)
-    this.handleTranslate = this.handleTranslate.bind(this)
+    this.setLanguage = this.setLanguage.bind(this)
     this.loadComparison = this.loadComparison.bind(this)
     this.loadResult = this.loadResult.bind(this)
     this.handleSaveComparison = this.handleSaveComparison.bind(this)
@@ -104,9 +106,7 @@ export default class Compare extends Component {
     }
   }
 
-  handleTranslate (e) {
-    e.preventDefault()
-    const language = e.target.dataset.language
+  setLanguage (language) {
     const comparisons = this.state.comparisons
     const scores = repackResults(comparisons, language)
     this.setState({
@@ -123,13 +123,15 @@ export default class Compare extends Component {
   render () {
     return (
       <Page>
-        <h1 className='no-print'>Big five comparison</h1>
-        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.handleTranslate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang}</button>)}
-        <AddComparison addComparison={this.addComparison} />
-        <LoadFile handler={this.loadResult} buttonTitle='Load result' />
-        {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
-        {this.state.comparisons.length > 0 ? <button onClick={this.handleSaveComparison}>Save comparison</button> : null}
-        {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle='Load comparison' /> : null}
+        <div className='p-4'>
+          <h1 className='text-4xl font-semibold text-center'>Big five comparison</h1>
+          <SelectLanguage selectedLanguage={this.state.language} languages={languages} setLanguage={this.setLanguage} />
+          <AddComparison addComparison={this.addComparison} />
+          <LoadFile handler={this.loadResult} buttonTitle='Load result' />
+          {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
+          {this.state.comparisons.length > 0 ? <button onClick={this.handleSaveComparison}>Save comparison</button> : null}
+          {this.state.comparisons.length === 0 ? <LoadFile handler={this.loadComparison} buttonTitle='Load comparison' /> : null}
+        </div>
       </Page>
     )
   }
