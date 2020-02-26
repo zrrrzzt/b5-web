@@ -53,8 +53,8 @@
     "jcb64": "2.0.2",
     "next": "9.2.2",
     "next-offline": "5.0.0",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
     "react-easy-chart": "1.0.0"
   },
   "devDependencies": {
