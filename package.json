@@ -58,7 +58,7 @@
     "react-easy-chart": "1.0.0"
   },
   "devDependencies": {
-    "ava": "3.7.0",
+    "ava": "3.7.1",
     "babel-eslint": "10.1.0",
     "coveralls": "3.0.13",
     "nyc": "15.0.1",
