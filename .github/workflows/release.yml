@@ -20,4 +20,4 @@ jobs:
     - name: Deploy to ZEIT
       env:
         ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
-      run: now --prod --token ${ZEIT_TOKEN}
+      run: now --confirm --prod --token ${ZEIT_TOKEN}
