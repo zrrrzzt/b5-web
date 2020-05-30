@@ -1,9 +1,6 @@
 {
   "version": 2,
-  "name": "b5-web",
-  "alias": [
-    "b5.allthethings.win"
-  ],
+  "scope": "zrrrzzt",
   "env": {
     "NODE_ENV": "production"
   },

@@ -69,3 +69,5 @@ typings/
 .next
 out
 dist
+
+.vercel
