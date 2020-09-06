@@ -37,7 +37,7 @@ export default class Result extends Component {
       const scores = calculateScore({ answers: results.answers })
       const info = getInfo()
       let language = this.state.language
-      if (info.languages.includes(results.language)) {
+      if (info.languages.map(lang => lang.id).includes(results.language)) {
         language = results.language
       }
       const resume = getResult({ scores: scores, lang: language })
@@ -74,7 +74,7 @@ export default class Result extends Component {
     const scores = calculateScore({ answers: results.answers })
     const info = getInfo()
     let language = this.state.language
-    if (info.languages.includes(results.language)) {
+    if (info.languages.map(lang => lang.id).includes(results.language)) {
       language = results.language
     }
     const resume = getResult({ scores: scores, lang: language })
@@ -99,7 +99,7 @@ export default class Result extends Component {
       const scores = calculateScore({ answers: results.answers })
       const info = getInfo()
       let language = this.state.language
-      if (info.languages.includes(results.language)) {
+      if (info.languages.map(lang => lang.id).includes(results.language)) {
         language = results.language
       }
       const resume = getResult({ scores: scores, lang: language })
@@ -138,7 +138,7 @@ export default class Result extends Component {
     return (
       <Page>
         <h1>Big Five Result</h1>
-        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.handleTranslateResume} className={lang === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang}</button>)}
+        {getInfo().languages.map((lang, index) => <button data-language={lang.id} onClick={this.handleTranslateResume} className={lang.id === this.state.viewLanguage ? 'isActive' : ''} key={index}>{lang.text}</button>)}
         {this.state.resume === false ? <AddResults addResults={this.addResults} /> : null}
         {this.state.resume === false ? <LoadFile handler={this.loadResults} buttonTitle='Upload' /> : null}
         {this.state.resume !== false
