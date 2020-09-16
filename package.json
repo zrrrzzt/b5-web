@@ -36,7 +36,7 @@
     "node": ">= 12.18.3"
   },
   "dependencies": {
-    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "5.1.0",
+    "@alheimsins/b5-johnson-120-ipip-neo-pi-r": "5.1.1",
     "@alheimsins/b5-result-text": "4.0.0",
     "@alheimsins/bigfive-calculate-score": "2.0.5",
     "file-saver": "2.0.2",
