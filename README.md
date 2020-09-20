@@ -39,9 +39,9 @@ Deploy the `dist` folder to your favorite host
 
 ## Related
 - [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) The npm module with questions
-- [b5-calculate-score](https://github.com/zrrrzzt/b5-calculate-score) Module for calculating score
-- [b5-result-text](https://github.com/zrrrzzt/b5-result-text) Create a text resume based on the score
-- [bigfive-web](https://github.com/Alheimsins/bigfive-web) Different approach to testsite based on microservices
+- [bigfive-calculate-score](https://github.com/Alheimsins/bigfive-calculate-score) Module for calculating score
+- [b5-result-text](https://github.com/Alheimsins/b5-result-text) Create a text resume based on the score
+- [bigfive-web](https://github.com/rubynor/bigfive-web) Different approach to testsite with database backend
 
 ## License
 
@@ -49,4 +49,4 @@ Deploy the `dist` folder to your favorite host
 
 ## About
 
-Created with <3 by [zrrzzt](https://github.com/zrrrzzt) and [maccyber](https://github.com/maccyber)
+Created with ❤ by [zrrzzt](https://github.com/zrrrzzt) and [maccyber](https://github.com/maccyber)
