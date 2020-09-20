@@ -11,12 +11,12 @@ Runs on Node/Next.js but can be exported to a static site.
 
 See it live: [b5.allthethings.win](https://b5.allthethings.win/)
 
-## Deploy your own to ZEIT/Now
+## Deploy your own to Vercel
 
-You will need to have [Now](https://zeit.co/now) installed as well as [Node.js](https://nodejs.org).
+You will need to have [vercel](https://vercel.com/download) installed as well as [Node.js](https://nodejs.org).
 
 - Clone the repo.
-- Configure [now.json](now.json) with your own alias
+- Configure [vercel.json](vercel.json) with your own scope
 - Run the deploy script 
 
 ```
