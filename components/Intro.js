@@ -1,5 +1,16 @@
+const languageSort = (a, b) => {
+  if (a.text < b.text) {
+    return -1
+  }
+  if (a.text > b.text) {
+    return 1
+  }
+  return 0
+}
+
 export default ({ selectedLanguage, info, setLanguage, startTest }) => {
   const { languages } = info
+  languages.sort(languageSort)
   return (
     <div className='intro-wrapper'>
       <p>This is a test for the five factor model of personality based on work from <a href='https://github.com/kholia/IPIP-NEO-PI' target='blank'>IPIP-NEO-PI</a>.</p>
