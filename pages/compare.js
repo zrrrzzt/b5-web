@@ -7,6 +7,7 @@ import repackResults from '../components/repack-results'
 const { unpack } = require('jcb64')
 const { getInfo } = require('@alheimsins/b5-result-text')
 const FileSaver = require('file-saver')
+const { languages } = getInfo()
 
 export default class Compare extends Component {
   constructor (props) {
@@ -124,7 +125,7 @@ export default class Compare extends Component {
     return (
       <Page>
         <h1 className='no-print'>Big five comparison</h1>
-        {getInfo().languages.map((lang, index) => <button data-language={lang} onClick={this.handleTranslate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang}</button>)}
+        {languages.map((lang, index) => <button data-language={lang.id} onClick={this.handleTranslate} className={lang === this.state.viewLanguage ? 'isActive no-print' : 'no-print'} key={index}>{lang.text}</button>)}
         <AddComparison addComparison={this.addComparison} />
         <LoadFile handler={this.loadResult} buttonTitle='Load result' />
         {this.state.scores ? <Comparisons data={this.state.scores} chartWidth={this.state.chartWidth} /> : null}
