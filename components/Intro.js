@@ -8,7 +8,7 @@ const languageSort = (a, b) => {
   return 0
 }
 
-export default ({ selectedLanguage, info, setLanguage, startTest }) => {
+const Intro = ({ selectedLanguage, info, setLanguage, startTest }) => {
   const { languages } = info
   languages.sort(languageSort)
   return (
@@ -82,3 +82,5 @@ export default ({ selectedLanguage, info, setLanguage, startTest }) => {
     </div>
   )
 }
+
+export default Intro
