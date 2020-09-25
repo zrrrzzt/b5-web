@@ -8,7 +8,7 @@ const languageSort = (a, b) => {
   return 0
 }
 
-const Intro = ({ selectedLanguage, info, setLanguage, startTest }) => {
+const Intro = ({ info, language, setLanguage, startTest }) => {
   const { languages } = info
   languages.sort(languageSort)
   return (
@@ -22,9 +22,15 @@ const Intro = ({ selectedLanguage, info, setLanguage, startTest }) => {
         <li>Your spontaneous answer is usually the most accurate.</li>
       </ul>
       <p><strong>Select test language</strong></p>
-      <div>
-        {languages.map((lang, index) => <button className={selectedLanguage === lang.id ? 'isActive' : ''} onClick={() => setLanguage(lang.id)} key={index}>{lang.text}</button>)}
-      </div>
+      <select
+        value={language}
+        onChange={event => setLanguage(event.target.value)}
+      >
+        <option value='' key='first-option'>Choose language</option>
+        {languages.map(lang => (
+          <option value={lang.id} key={lang.id}>{lang.text}</option>
+        ))}
+      </select>
       <div>
         <button onClick={startTest}>Start test</button>
       </div>
@@ -32,6 +38,9 @@ const Intro = ({ selectedLanguage, info, setLanguage, startTest }) => {
         {`
           ul {
             list-style-type: none;
+          }
+          select {
+            padding: 5px;
           }
           button {
             background-color: white;

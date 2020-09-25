@@ -63,7 +63,7 @@ const Index = props => {
       <Page>
         <h1>Big Five Test</h1>
         {intro === false
-          ? <Intro selectedLanguage={language} info={getInfo()} setLanguage={setLanguage} startTest={startTest} />
+          ? <Intro info={getInfo()} language={language} setLanguage={setLanguage} startTest={startTest} />
           : null}
         {items !== false && nowShowing === items.length
           ? <button onClick={handleSubmit}>Submit</button>
