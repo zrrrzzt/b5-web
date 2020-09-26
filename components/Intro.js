@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+const { getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
+
 const languageSort = (a, b) => {
   if (a.text < b.text) {
     return -1
@@ -8,8 +12,10 @@ const languageSort = (a, b) => {
   return 0
 }
 
-const Intro = ({ info, language, setLanguage, startTest }) => {
-  const { languages } = info
+const Intro = () => {
+  const router = useRouter()
+  const [language, setLanguage] = useState('en')
+  const { languages } = getInfo()
   languages.sort(languageSort)
   return (
     <div className='intro-wrapper'>
@@ -32,7 +38,7 @@ const Intro = ({ info, language, setLanguage, startTest }) => {
         ))}
       </select>
       <div>
-        <button onClick={startTest}>Start test</button>
+        <button onClick={() => router.push(`/test?language=${language}`)}>Start test</button>
       </div>
       <style jsx>
         {`

@@ -1,12 +1,8 @@
-import { useState } from 'react'
 import Head from 'next/head'
 import Page from '../components/Page'
 import Intro from '../components/Intro'
-const { getInfo } = require('@alheimsins/b5-johnson-120-ipip-neo-pi-r')
 
 const Index = props => {
-  const [language, setLanguage] = useState('en')
-
   return (
     <>
       <Head>
@@ -14,7 +10,7 @@ const Index = props => {
       </Head>
       <Page>
         <h1>Big Five Test</h1>
-        <Intro info={getInfo()} language={language} setLanguage={setLanguage} />
+        <Intro />
         <style jsx>
           {`
             h2 {
