@@ -30,6 +30,7 @@ const Test = props => {
     }
 
     thisAnswers[event.target.dataset.qid] = {
+      id: event.target.dataset.qid,
       domain: event.target.dataset.domain,
       facet: event.target.dataset.facet,
       score: event.target.dataset.score
@@ -41,6 +42,7 @@ const Test = props => {
     const choices = Object.keys(answers).reduce((prev, current) => {
       const choice = answers[current]
       prev.push({
+        id: choice.id,
         domain: choice.domain,
         facet: choice.facet,
         score: choice.score
