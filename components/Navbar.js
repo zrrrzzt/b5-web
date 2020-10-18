@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default ({ username = false }) => (
+const Navbar = ({ username = false }) => (
   <nav>
     <ul className='left'>
       <li>
@@ -73,3 +73,5 @@ export default ({ username = false }) => (
     </style>
   </nav>
 )
+
+export default Navbar
