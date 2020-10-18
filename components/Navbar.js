@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const Navbar = ({ username = false }) => (
+const Navbar = () => (
   <nav>
     <ul className='left'>
       <li>
