@@ -1,7 +1,7 @@
 import Summary from './Summary'
 import Domain from './Domain'
 
-export default ({ data, width }) => (
+const Resume = ({ data, width }) => (
   <div>
     {data
       ? <Summary data={data} yDomainRange={[24, 120]} chartWidth={width} />
@@ -11,3 +11,5 @@ export default ({ data, width }) => (
       : null}
   </div>
 )
+
+export default Resume
