@@ -40,7 +40,7 @@
     "@alheimsins/b5-result-text": "4.1.1",
     "@alheimsins/bigfive-calculate-score": "2.0.5",
     "file-saver": "2.0.2",
-    "jcb64": "3.0.2",
+    "jcb64": "3.0.3",
     "next": "10.0.1",
     "next-offline": "5.0.3",
     "react": "17.0.1",
