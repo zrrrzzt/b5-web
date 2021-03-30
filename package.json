@@ -41,7 +41,7 @@
     "@alheimsins/bigfive-calculate-score": "2.0.5",
     "file-saver": "2.0.5",
     "jcb64": "3.0.3",
-    "next": "10.0.9",
+    "next": "10.1.1",
     "next-offline": "5.0.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
